@@ -48,26 +48,20 @@ void init_target_properties()
 
     fin.open("/sys/firmware/devicetree/base/hisi,product_name");
     while (getline(fin, buf))
-        if ((buf.find("ALICE_TLO2") != std::string::npos) || (buf.find("ALICE_TL21") != std::string::npos) || (buf.find("ALICE_TL23") != std::string::npos))
+        if ((buf.find("CHERRY_PLUS_ED00") != std::string::npos) || (buf.find("CHERRY_PLUS_TL00") != std::string::npos) || (buf.find("CHERRY_PLUS_UL00") != std::string::npos))
             break;
     fin.close();
 
-    if (buf.find("ALICE_TLO2") != std::string::npos) {
-        property_set("ro.product.model", "ALE-L02");
-        property_set("ro.build.description", "ALE-L02-user 6.0 HuaweiALE-L02 C190B575 release-keys");
-        property_set("ro.build.fingerprint", "Huawei/ALE-L02/hwALE-H:6.0/HuaweiALE-L02/C190B575:user/release-keys");
+    if (buf.find("CHERRY_PLUS_ED00") != std::string::npos) {
+        property_set("ro.product.model", "Che2-L11");
     }
-    else if (buf.find("ALICE_TL21") != std::string::npos) {
-        property_set("ro.product.model", "ALE-L21");
-        property_set("ro.build.description", "ALE-L21-user 6.0 HuaweiALE-L21 C432B596 release-keys");
-        property_set("ro.build.fingerprint", "Huawei/ALE-L21/hwALE-H:6.0/HuaweiALE-L21/C432B596:user/release-keys");	
+    else if (buf.find("CHERRY_PLUS_TL00") != std::string::npos) {
+        property_set("ro.product.model", "Che2-TL00");	
     }
-    else if (buf.find("ALICE_TL23") != std::string::npos) {
-        property_set("ro.product.model", "ALE-L23");
-        property_set("ro.build.description", "ALE-L21-user 6.0 HuaweiALE-L21 C432B596 release-keys");
-        property_set("ro.build.fingerprint", "Huawei/ALE-L21/hwALE-H:6.0/HuaweiALE-L21/C432B596:user/release-keys");
+    else if (buf.find("CHERRY_PLUS_UL00") != std::string::npos) {
+        property_set("ro.product.model", "Che2-UL00");
     }
     else {
-	property_set("ro.product.model", "UNKNOWN");
+	property_set("ro.product.model", "hi6210sft");
     }
 }
