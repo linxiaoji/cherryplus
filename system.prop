@@ -5,7 +5,7 @@ ro.config.fm_type=libbcmfm_if
 ro.config.ipv4.mtu=1400
 gsm.fastdormancy.mode=3
 sys.refresh.dirty=1
-qemu.hw.mainkeys=0
+qemu.hw.mainkeys=1
 media.stagefright.use-awesome=false
 
 # Camera

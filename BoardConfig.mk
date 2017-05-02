@@ -57,6 +57,7 @@ TARGET_NO_RADIOIMAGE := true
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
+BOARD_BLUEDROID_VENDOR_CONF := $(LOCL_PATH)/bluetooth/vnd_hi6210sft.txt
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 
 # Camera
@@ -99,7 +100,7 @@ BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_CMDLINE := hisi_dma_print=0 vmalloc=384M maxcpus=8 coherent_pool=512K no_irq_affinity ate_enable=true androidboot.selinux=permissive
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x07b88000 --tags_offset 0x02988000
 TARGET_KERNEL_ARCH := arm64
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := /home/ksrt12/aarch64-linux-android-4.9/bin/aarch64-linux-android-
 TARGET_KERNEL_HEADER_ARCH := arm64
 BOARD_KERNEL_IMAGE_NAME := Image
 TARGET_KERNEL_SOURCE := /home/ksrt12/kernel
@@ -118,7 +119,6 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2684354560
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 11605639168
 BOARD_CACHEIMAGE_PARTITION_SIZE := 268435456
 BOARD_FLASH_BLOCK_SIZE := 131072
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := /home/ksrt12/aarch64-linux-android-4.9/bin/aarch64-linux-android-
 
 # Properties
 TARGET_SYSTEM_PROP := $(LOCAL_PATH)/system.prop
@@ -141,11 +141,19 @@ TARGET_UNIFIED_DEVICE := true
 TARGET_INIT_VENDOR_LIB := libinit_hi6210sft
 TARGET_LIBINIT_DEFINES_FILE := $(LOCAL_PATH)/init/init_cherryplus.cpp
 
-# Wifi
-WPA_SUPPLICANT_VERSION          := VER_0_8_X
-BOARD_WPA_SUPPLICANT_DRIVER 	:= NL80211
-BOARD_HOSTAPD_DRIVER 		:= NL80211
-CONFIG_DRIVER_NL80211		:= y
+# Wi-Fi
+WPA_SUPPLICANT_VERSION := VER_0_8_X
+BOARD_WLAN_DEVICE := bcmdhd
+BOARD_WPA_SUPPLICANT_DRIVER := NL80211
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
+BOARD_HOSTAPD_DRIVER  := NL80211
+BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
+
+WIFI_DRIVER_FW_PATH_AP    := "/vendor/firmware/fw_bcm4343s_apsta_hw.bin"
+WIFI_DRIVER_FW_PATH_STA   := "/vendor/firmware/fw_bcm4343s_hw.bin"
+WIFI_DRIVER_FW_PATH_P2P   := "/vendor/firmware/fw_bcm4343s_p2p_hw.bin"
+WIFI_DRIVER_FW_PATH_PARAM := "/sys/module/bcmdhd/parameters/firmware_path"
+WIFI_DRIVER_MODULE_ARG    := "firmware_path=/system/vendor/firmware/fw_bcm4343s_hw.bin nvram_path=/system/vendor/firmware/nvram_CHERRY_PLUS_ED00.txt"
 
 # inherit from the proprietary version
 -include vendor/huawei/cherryplus/BoardConfigVendor.mk
