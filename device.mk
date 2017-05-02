@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-$(call inherit-product-if-exists, vendor/huawei/alice/alice-vendor.mk)
+$(call inherit-product-if-exists, vendor/huawei/cherryplus/cherryplus-vendor.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay

@@ -1,3 +1,4 @@
+
 #
 # Copyright (C) 2017 The LineageOS Project
 #
@@ -101,7 +102,7 @@ TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 TARGET_KERNEL_HEADER_ARCH := arm64
 BOARD_KERNEL_IMAGE_NAME := Image
-TARGET_KERNEL_SOURCE := ../kernel
+TARGET_KERNEL_SOURCE := /home/ksrt12/kernel
 TARGET_KERNEL_CONFIG := che2_l11_defconfig
 
 # Lights
@@ -117,6 +118,7 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2684354560
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 11605639168
 BOARD_CACHEIMAGE_PARTITION_SIZE := 268435456
 BOARD_FLASH_BLOCK_SIZE := 131072
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := /home/ksrt12/aarch64-linux-android-4.9/bin/aarch64-linux-android-
 
 # Properties
 TARGET_SYSTEM_PROP := $(LOCAL_PATH)/system.prop
@@ -127,7 +129,7 @@ TARGET_RECOVERY_DEVICE_MODULES := libinit_hi6210sft
 
 # RIL
 COMMON_GLOBAL_CFLAGS += -DDISABLE_ASHMEM_TRACKING
-BOARD_RIL_CLASS := ../../../device/huawei/che2-l11/ril
+BOARD_RIL_CLASS := ../../../device/huawei/cherryplus/ril
 PROTOBUF_SUPPORTED := true
 TARGET_RIL_VARIANT := proprietary
 
@@ -146,4 +148,4 @@ BOARD_HOSTAPD_DRIVER 		:= NL80211
 CONFIG_DRIVER_NL80211		:= y
 
 # inherit from the proprietary version
--include vendor/huawei/alice/BoardConfigVendor.mk
+-include vendor/huawei/cherryplus/BoardConfigVendor.mk

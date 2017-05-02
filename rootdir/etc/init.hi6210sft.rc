@@ -29,9 +29,6 @@ import /init.hi6210sft.power.rc
 import /init.hi6210sft.usb.rc
 
 on early-init
-    setprop ro.connectivity.sta_p2p_coex false
-    setprop wifi.interface wlan0
-
     write /sys/block/mmcblk0/queue/nr_requests 256
 
 on init
@@ -438,6 +435,10 @@ on early-boot
     chown radio radio sys/devices/platform/balong_power/state        
 
 on boot
+    setprop wifi.interface wlan0
+
+    chown system system /sys/module/bcmdhd/parameters/dhd_console_ms
+
     write /sys/kernel/debug/kmemleak scan=14400
 
     chown nfc nfc /sys/bus/i2c/devices/0-0028/nfc_fwupdate
@@ -792,18 +793,6 @@ service macaddr /system/bin/mac_addr_normalization
     group root bluetooth net_bt_stack wifi
     oneshot
 
-service hi110x_ecpt /system/bin/hi110x_except_logd -wbg -p /data/hwlogdir/exception/ -n 30 -c
-    class late_start
-    user system
-    group system root
-    disabled
-
-service hi110x_logd /system/bin/hi110x_logd
-    class late_start
-    user system
-    group system root media_rw
-    disabled
-
 service chr_logd /system/bin/chr_logd
     class late_start
     user system
@@ -823,12 +812,6 @@ service oam_app /system/bin/oam_app
     disabled
     oneshot
 
-service hisi_bfg /system/bin/hisi_connectivity.sh
-    class late_start
-    user root
-    group system
-    oneshot
-
 on property:init.svc.hisi_bfg=stopped
     write /proc/wifi_enable/wifi_start 1
     write /proc/oam_enable/oam_start 1
@@ -840,18 +823,6 @@ on property:init.svc.hisi_bfg=stopped
     start agnsslog
     start supl20clientd
     start watchlssd
-#    start hi110x_logd
-#    start hi110x_ecpt
-
-service wpa_supplicant /system/bin/wpa_supplicant -ddd \
-    -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
-    -I/system/etc/wifi/wpa_supplicant_overlay.conf \
-    -O/data/misc/wifi/sockets \
-    -e/data/misc/wifi/entropy.bin -g@android:wpa_wlan0
-    class main
-    socket wpa_wlan0 dgram 660 wifi wifi
-    disabled
-    oneshot
 
 service p2p_supplicant /system/bin/wpa_supplicant -ddd \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
@@ -864,9 +835,13 @@ service p2p_supplicant /system/bin/wpa_supplicant -ddd \
     disabled
     oneshot
 
-service hostapd_bin /system/bin/hostapd_hisi -d /data/misc/wifi/hostapd_hisi.conf
-    socket wpa_wlan0 dgram 660 wifi wifi
+service wpa_supplicant /system/bin/wpa_supplicant -ddd \
+    -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
+    -I/system/etc/wifi/wpa_supplicant_overlay.conf \
+    -O/data/misc/wifi/sockets \
+    -e/data/misc/wifi/entropy.bin -g@android:wpa_wlan0
     class main
+    socket wpa_wlan0 dgram 660 wifi wifi
     disabled
     oneshot
 
