@@ -1,31 +1,26 @@
 @Copyright 2017 - The LineageOS Project
 
-Huawei P8Lite detailed specifications:
-======================================
+Device configuration for Huawei Honor 4X/4C.
+=====================================
 
-Basic         |Spec Sheet
--------------:|:--------------------------------------------------------------------------------------------------------------------------
-Network	      | GSM / HSPA / LTE
-Launch	      |2015, April
-Body	      |143 x 70.6 x 7.7 mm (5.63 x 2.78 x 0.30 in); 131 g (4.62 oz); Dual SIM (Nano-SIM/ Micro-SIM, dual stand-by)
-Display	      |IPS LCD capacitive touchscreen, 16M colors; 5.0 inches; 720 x 1280 pixels; Corning Gorilla Glass 3
-Platform      |Android OS, v5.0.2 (Lollipop), upgradable to v6.0 (Marshmallow)
-Chipset	      |HiSilicon Kirin 620
-CPU	      |Octa-core 1.2 GHz Cortex-A53
-GPU	      |Mali-450MP4
-Memory	      |16 GB, 2 GB RAM; microSD, up to 256 GB (uses SIM 2 slot)
-Rear Camera   |13 MP, f/2.0, 27mm, autofocus, dual-LED flash, Geo-tagging, touch focus, face/smile detection, panorama, HDR, 1080p@30fps
-Front Camera  |5 MP, 720p
-Sound	      |- Active noise cancellation with dedicated mic
-WLAN	      |Wi-Fi 802.11 a/b/g/n, WiFi Direct, hotspot
-Bluetooth     |v4.0, A2DP, EDR, LE
-GPS	      |Yes, with A-GPS, GLONASS
-NFC	      |Yes
-Radio	      |FM radio
-USB	      |microUSB v2.0
-Sensors	      |Accelerometer, proximity, compass
-Battery	      |Non-removable Li-Ion 2200 mAh battery
-Colors 	      |Black, White, Gold
+Basic   | Spec Sheet
+-------:|:-------------------------
+CPU     | Octa-core 1.2 GHz ARM® Cortex™ A53
+CHIPSET | HiSilicon Kirin 620
+GPU     | Mali-450 MP4
+Memory  | 2 GB
+Shipped Android Version | 6.0
+Storage | 8 GB
+MicroSD | Up to 32 GB
+Battery | 3000 / 2 550 mAh (non-removable)
+Dimensions | 77 x 153 x 8,6 mm / 71,9 x 143,3 x 8,8 mm
+Display | 720 x 1280 pixels, 5.5" / 5.0"
+Rear Camera  | 13.0 MP, LED flash
+Front Camera | 5.0 MP
+LTE          | 800, 1800, 2100, 2600 / -
+Bluetooth    | 4.0
+Wi-Fi        | 802.11a,b,g,n
+NFC	         | No
+Release Date | 2015
 
-
-![Huawei P8Lite](http://cdn2.gsmarena.com/vv/pics/huawei/huawei-p8-lite.jpg "Huawei P8Lite")
+![Huawei Honor 4X](https://wiki.lineageos.org/images/devices/cherry.png "Huawei Honor 4X")

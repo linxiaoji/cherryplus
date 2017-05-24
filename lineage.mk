@@ -12,7 +12,26 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-$(call inherit-product, device/huawei/cherryplus/full_cherryplus.mk)
+# Inherit from those products. Most specific first.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/locales_full.mk)
 
+# Inherit from kiwi device
+$(call inherit-product, device/huawei/cherryplus/device.mk)
+
+# Inherit some common CM stuff.
+$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+
+# Boot animation
+TARGET_SCREEN_HEIGHT := 1280
+TARGET_SCREEN_WIDTH := 720
+
+PRODUCT_GMS_CLIENTID_BASE := android-huawei
+
+# Device identifier. This must come after all inclusions
 PRODUCT_NAME := lineage_cherryplus
 PRODUCT_DEVICE := cherryplus
+PRODUCT_BRAND := Honor
+PRODUCT_MANUFACTURER := HUAWEI
+PRODUCT_MODEL := Che2-L11
