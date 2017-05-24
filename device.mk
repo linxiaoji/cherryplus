@@ -107,9 +107,10 @@ PRODUCT_PACKAGES += \
 	tinymix \
 	tinypcminfo
 
-# Gello
+# Apps
 PRODUCT_PACKAGES += \
-	Gello
+	Chrome \
+	RootExplorer
 
 # KEYPAD
 PRODUCT_PACKAGES += \
