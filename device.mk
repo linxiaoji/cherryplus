@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-$(call inherit-product, vendor/huawei/cherryplus/cherryplus-vendor.mk)
+$(call inherit-product-if-exists, vendor/huawei/cherryplus/cherryplus-vendor.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
@@ -153,7 +153,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libtinyxml
 
-# Wifi
+# Wi-fi
 PRODUCT_PACKAGES += \
     libwpa_client \
     dhcpcd.conf \
