@@ -16,6 +16,17 @@ persist.camera.cpp.duplication=false
 
 # Performance
 ro.am.reschedule_service=true
+#
+# Graphics
+#
+ro.bq.gpu_to_cpu_unsupported=1
+#
+# Media
+#
+persist.sys.sr_google_avc_enc=1
+persist.sys.google_avc_enc=0
+media.stagefright.legacyencoder=true
+media.stagefright.less-secure=true
 
 ro.hwui.texture_cache_size=72
 ro.hwui.texture_cache_flushrate=0.4
@@ -46,3 +57,5 @@ ro.telephony.default_network=9
 ro.telephony.ril.config=simactivation
 telephony.lteOnCdmaDevice=0
 telephony.lteOnGsmDevice=1
+
+ro.config.helix_enable=true

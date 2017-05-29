@@ -1,4 +1,3 @@
-
 #
 # Copyright (C) 2017 The LineageOS Project
 #
@@ -29,7 +28,6 @@ TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a53
 TARGET_BOARD_GPU := mali-450mp
 
-ANDROID_64=true
 TARGET_USES_64_BIT_BINDER := true
 
 TARGET_CPU_SMP := true
@@ -42,7 +40,7 @@ BOARD_VENDOR_PLATFORM := hi6210sft
 ENABLE_CPUSETS := true
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := hi6210sft,cherryplus,che2,che2-l11,Che2-L11,hwChe2,CHM-U01,chm-u01
+TARGET_OTA_ASSERT_DEVICE := hi6210sft,alice,cherryplus,cherryplus,Che2-L11,hwChe2,CHM-U01,chm-u01
 
 # Audio
 BOARD_USES_ALSA_AUDIO := true
@@ -57,12 +55,13 @@ TARGET_NO_RADIOIMAGE := true
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
-BOARD_BLUEDROID_VENDOR_CONF := $(LOCAL_PATH)/bluetooth/vnd_hi6210sft.txt
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
+BOARD_BLUEDROID_VENDOR_CONF := $(LOCAL_PATH)/bluetooth/vnd_hi6210sft.txt
 
 # Camera
 USE_CAMERA_STUB := true
 USE_DEVICE_SPECIFIC_CAMERA := true
+TARGET_HAS_LEGACY_CAMERA_HAL1 := true
 
 # Charger
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
@@ -78,11 +77,14 @@ BOARD_HARDWARE_CLASS := \
 USE_OPENGL_RENDERER := true
 TARGET_HARDWARE_3D := true
 TARGET_USE_PAN_DISPLAY := true
+BOARD_EGL_CFG := device/huawei/cherryplus/egl.cfg
 ANDROID_ENABLE_RENDERSCRIPT := true
 TARGET_USES_ION := true
 BOARD_GLOBAL_CFLAGS += -DFORCE_SCREENSHOT_CPU_PATH
 BOARD_EGL_WORKAROUND_BUG_10194508 := true
 BOARD_EGL_NEEDS_HANDLE_VALUE := true
+BOARD_NO_SUPPORT_SWAP_BUFFERS_WITH_DAMAGE := true
+BOARD_DONT_USE_NATIVE_FENCE_SYNC := true
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 6
 TARGET_REQUIRES_SYNCHRONOUS_SETSURFACE := true
 
@@ -90,16 +92,21 @@ TARGET_REQUIRES_SYNCHRONOUS_SETSURFACE := true
 USE_DEVICE_SPECIFIC_GPS := true
 TARGET_NO_RPC := true
 
+# For TEST
+# Non PIE Support to run GPS
+TARGET_NEEDS_NON_PIE_SUPPORT := true
+
 # Kernel
 BOARD_KERNEL_BASE := 0x07478000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_CMDLINE := hisi_dma_print=0 vmalloc=384M maxcpus=8 coherent_pool=512K no_irq_affinity ate_enable=true androidboot.selinux=permissive
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x07b88000 --tags_offset 0x02988000
 TARGET_KERNEL_ARCH := arm64
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 TARGET_KERNEL_HEADER_ARCH := arm64
 BOARD_KERNEL_IMAGE_NAME := Image
-TARGET_KERNEL_SOURCE := /home/ksrt12/kernel
-TARGET_KERNEL_CONFIG := che2_l11_defconfig
+TARGET_KERNEL_SOURCE := kernel/shine
+TARGET_KERNEL_CONFIG := cherryplus_defconfig
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
@@ -136,7 +143,7 @@ TARGET_UNIFIED_DEVICE := true
 TARGET_INIT_VENDOR_LIB := libinit_hi6210sft
 TARGET_LIBINIT_DEFINES_FILE := $(LOCAL_PATH)/init/init_cherryplus.cpp
 
-# Wi-Fi
+# Wifi
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 BOARD_WLAN_DEVICE := bcmdhd
 BOARD_WPA_SUPPLICANT_DRIVER := NL80211
@@ -144,5 +151,11 @@ BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
 BOARD_HOSTAPD_DRIVER  := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
 
-# inherit from the proprietary version
--include vendor/huawei/cherryplus/BoardConfigVendor.mk
+WIFI_DRIVER_FW_PATH_AP    := "/vendor/firmware/fw_bcm4343s_apsta_hw.bin"
+WIFI_DRIVER_FW_PATH_STA   := "/vendor/firmware/fw_bcm4343s_hw.bin"
+WIFI_DRIVER_FW_PATH_P2P   := "/vendor/firmware/fw_bcm4343s_p2p_hw.bin"
+WIFI_DRIVER_FW_PATH_PARAM := "/sys/module/bcmdhd/parameters/firmware_path"
+WIFI_DRIVER_MODULE_ARG    := "firmware_path=/system/vendor/firmware/fw_bcm4343s_hw.bin nvram_path=/vendor/firmware/nvram_CHERRY_PLUS_ED00.txt"
+
+WITH_DEXPREOPT := true
+DONT_DEXPREOPT_PREBUILTS := true

@@ -52,14 +52,16 @@ void init_target_properties()
             break;
     fin.close();
 
-    if (buf.find("CHERRY_PLUS_ED00") != std::string::npos) {
-        property_set("ro.product.model", "Che2-L11");
-    }
-    else if (buf.find("CHERRY_PLUS_TL00") != std::string::npos) {
+    if (buf.find("CHERRY_PLUS_TL00") != std::string::npos) {
         property_set("ro.product.model", "Che2-TL00");	
     }
     else if (buf.find("CHERRY_PLUS_UL00") != std::string::npos) {
         property_set("ro.product.model", "Che2-UL00");
+    }
+    else if (buf.find("CHERRY_PLUS_ED00") != std::string::npos) {
+        property_set("ro.product.device", "hwChe2");
+        property_set("ro.product.model", "Che2-L11");
+        property_set("ro.product.name", "Che2-L11");
     }
     else {
 	property_set("ro.product.model", "hi6210sft");

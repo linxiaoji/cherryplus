@@ -1,0 +1,41 @@
+From 7dd7b6419f27485a91b77ac6b63435f9214e5898 Mon Sep 17 00:00:00 2001
+From: ksrt12 <kazakov12stepan2012@live.ru>
+Date: Sat, 27 May 2017 16:48:23 +0300
+Subject: [PATCH] custom url
+
+Change-Id: I9d337996d127ec964f290613b89cf44d7d1030c1
+---
+ res/values/config.xml                                       | 2 +-
+ src/com/cyanogenmod/updater/service/UpdateCheckService.java | 5 +----
+ 2 files changed, 2 insertions(+), 5 deletions(-)
+
+diff --git a/res/values/config.xml b/res/values/config.xml
+index 6f1e9cb..7a05372 100644
+--- a/res/values/config.xml
++++ b/res/values/config.xml
+@@ -9,5 +9,5 @@
+ -->
+ <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+     <!-- Updater Config Strings -->
+-    <string name="conf_update_server_url_def" translatable="false">https://download.lineageos.org/api</string>
++    <string name="conf_update_server_url_def" translatable="false">https://raw.githubusercontent.com/CM13-HI6210SFT/CMUpdater_API/cm-13.0/API</string>
+ </resources>
+diff --git a/src/com/cyanogenmod/updater/service/UpdateCheckService.java b/src/com/cyanogenmod/updater/service/UpdateCheckService.java
+index 319f68b..d05cf8c 100644
+--- a/src/com/cyanogenmod/updater/service/UpdateCheckService.java
++++ b/src/com/cyanogenmod/updater/service/UpdateCheckService.java
+@@ -224,10 +224,7 @@ public class UpdateCheckService extends IntentService
+         if (TextUtils.isEmpty(updateUri)) {
+             updateUri = getString(R.string.conf_update_server_url_def);
+         }
+-
+-        String incrementalVersion = SystemProperties.get("ro.build.version.incremental");
+-        updateUri += "/v1/" + Utils.getDeviceType() + "/" + getRomType() + "/" + incrementalVersion;
+-
++		
+         return URI.create(updateUri);
+     }
+ 
+-- 
+2.13.0
+
