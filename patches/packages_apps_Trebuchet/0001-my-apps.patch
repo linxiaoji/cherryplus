@@ -1,0 +1,167 @@
+From 892b48e2881b43ccb544d0724fa151cc58f1b2a6 Mon Sep 17 00:00:00 2001
+From: ksrt12 <kazakov12stepan2012@live.ru>
+Date: Tue, 30 May 2017 01:44:13 +0300
+Subject: [PATCH] my apps
+
+Change-Id: If861731bd8b8178035388cf0d94525948216d68a
+---
+ res/values/preferences_defaults.xml |  4 ++--
+ res/xml/default_workspace_4x4.xml   | 45 +++++++++++++++----------------------
+ res/xml/default_workspace_5x5.xml   |  6 ++---
+ res/xml/default_workspace_5x6.xml   |  8 +++----
+ 4 files changed, 27 insertions(+), 36 deletions(-)
+
+diff --git a/res/values/preferences_defaults.xml b/res/values/preferences_defaults.xml
+index 63c5e9c19..8651e83b9 100644
+--- a/res/values/preferences_defaults.xml
++++ b/res/values/preferences_defaults.xml
+@@ -4,11 +4,11 @@
+     <bool name="preferences_interface_homescreen_scrolling_wallpaper_scroll_default">true</bool>
+     <bool name="preferences_interface_homescreen_hide_icon_labels_default">false</bool>
+     <bool name="preferences_interface_drawer_hide_icon_labels_default">false</bool>
+-    <bool name="preferences_interface_drawer_compact_default">false</bool>
++    <bool name="preferences_interface_drawer_compact_default">true</bool>
+     <bool name="preferences_interface_drawer_dark_default">true</bool>
+     <bool name="preferences_interface_general_icons_large_default">false</bool>
+     <bool name="preferences_interface_use_scroller_default">true</bool>
+-    <bool name="preferences_interface_use_horizontal_scrubber_default">true</bool>
++    <bool name="preferences_interface_use_horizontal_scrubber_default">false</bool>
+     <bool name="preferences_interface_drawer_search_default">true</bool>
+     <bool name="preferences_interface_allow_rotation">false</bool>
+     <bool name="preferences_interface_homescreen_remote_folder_default">false</bool>
+diff --git a/res/xml/default_workspace_4x4.xml b/res/xml/default_workspace_4x4.xml
+index 40172bd31..420e829b6 100644
+--- a/res/xml/default_workspace_4x4.xml
++++ b/res/xml/default_workspace_4x4.xml
+@@ -35,9 +35,6 @@
+             launcher:className="com.google.android.googlequicksearchbox.SearchActivity"
+             launcher:packageName="com.google.android.googlequicksearchbox" />
+         <favorite
+-            launcher:packageName="com.android.chrome"
+-            launcher:className="com.google.android.apps.chrome.Main" />
+-        <favorite
+             launcher:className="com.google.android.gm.ConversationListActivityGmail"
+             launcher:packageName="com.google.android.gm" />
+         <favorite
+@@ -66,33 +63,27 @@
+             launcher:packageName="com.google.android.apps.plus" />
+     </folder>
+ 
+-    <!-- Play Folder -->
+-    <folder launcher:screen="1" launcher:x="1" launcher:y="3" launcher:title="@string/play_folder_title">
+-        <favorite
+-            launcher:className="com.android.music.activitymanagement.TopLevelActivity"
+-            launcher:packageName="com.google.android.music" />
+-        <favorite
+-            launcher:className="com.google.android.youtube.videos.EntryPoint"
+-            launcher:packageName="com.google.android.videos" />
+-        <favorite
+-            launcher:className="com.google.android.gms.games.ui.destination.main.MainActivity"
+-            launcher:packageName="com.google.android.play.games" />
+-        <favorite
+-            launcher:className="com.google.android.apps.books.app.BooksActivity"
+-            launcher:packageName="com.google.android.apps.books" />
+-        <favorite
+-            launcher:className="com.google.apps.dots.android.app.activity.CurrentsStartActivity"
+-            launcher:packageName="com.google.android.apps.magazines" />
+-    </folder>
+ 
+     <favorite
+-            launcher:packageName="com.cyngn.themestore"
+-            launcher:className="com.cyngn.themestore.ui.StoreActivity"
++            launcher:packageName="com.vkontakte.android"
++            launcher:className="com.vkontakte.android.MainActivity" 
+             launcher:screen="1"
+-            launcher:x="2"
++            launcher:x="1"
+             launcher:y="3" />
+ 
+     <resolve
++            launcher:screen="1"
++            launcher:x="2"
++            launcher:y="3" >
++    <favorite
++            launcher:packageName="com.speedsoftware.rootexplorer"
++            launcher:className="com.speedsoftware.rootexplorer.RootExplorer" />
++    <favorite
++            launcher:packageName="com.cyngn.themestore"
++            launcher:className="com.cyngn.themestore.ui.StoreActivity" />
++    </resolve>
++
++    <resolve
+         launcher:screen="1"
+         launcher:x="3"
+         launcher:y="3" >
+@@ -186,6 +177,9 @@
+         launcher:x="2"
+         launcher:y="0" >
+         <favorite
++            launcher:packageName="com.android.chrome"
++            launcher:className="com.google.android.apps.chrome.Main" />
++        <favorite
+             launcher:packageName="org.cyanogenmod.gello.browser"
+             launcher:className="com.android.browser.BrowserActivity" />
+         <favorite
+@@ -194,9 +188,6 @@
+         <favorite
+             launcher:packageName="com.cyngn.browser"
+             launcher:className="com.android.browser.BrowserLauncher" />
+-        <favorite
+-            launcher:packageName="com.android.chrome"
+-            launcher:className="com.google.android.apps.chrome.Main" />
+     </resolve>
+ 
+     <resolve
+diff --git a/res/xml/default_workspace_5x5.xml b/res/xml/default_workspace_5x5.xml
+index 5f8a621d8..e0adc8616 100644
+--- a/res/xml/default_workspace_5x5.xml
++++ b/res/xml/default_workspace_5x5.xml
+@@ -185,6 +185,9 @@
+         launcher:screen="3"
+         launcher:x="2"
+         launcher:y="0" >
++		<favorite
++            launcher:packageName="com.android.chrome"
++            launcher:className="com.google.android.apps.chrome.Main" />
+         <favorite
+             launcher:packageName="org.cyanogenmod.gello.browser"
+             launcher:className="com.android.browser.BrowserActivity" />
+@@ -194,9 +197,6 @@
+         <favorite
+             launcher:packageName="com.cyngn.browser"
+             launcher:className="com.android.browser.BrowserLauncher" />
+-        <favorite
+-            launcher:packageName="com.android.chrome"
+-            launcher:className="com.google.android.apps.chrome.Main" />
+     </resolve>
+ 
+     <resolve
+diff --git a/res/xml/default_workspace_5x6.xml b/res/xml/default_workspace_5x6.xml
+index da0ac163c..84d5a084a 100644
+--- a/res/xml/default_workspace_5x6.xml
++++ b/res/xml/default_workspace_5x6.xml
+@@ -185,7 +185,10 @@
+         launcher:screen="4"
+         launcher:x="4"
+         launcher:y="0" >
+-        <favorite
++		<favorite
++            launcher:packageName="com.android.chrome"
++            launcher:className="com.google.android.apps.chrome.Main" />
++		<favorite
+             launcher:packageName="org.cyanogenmod.gello.browser"
+             launcher:className="com.android.browser.BrowserActivity" />
+         <favorite
+@@ -194,9 +197,6 @@
+         <favorite
+             launcher:packageName="com.cyngn.browser"
+             launcher:className="com.android.browser.BrowserLauncher" />
+-        <favorite
+-            launcher:packageName="com.android.chrome"
+-            launcher:className="com.google.android.apps.chrome.Main" />
+     </resolve>
+ 
+     <resolve
+-- 
+2.13.0
+

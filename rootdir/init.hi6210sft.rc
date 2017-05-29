@@ -27,7 +27,6 @@
 
 import /init.hi6210sft.power.rc
 import /init.hi6210sft.usb.rc
-#import /init.connectivity.rc
 
 on early-init
     write /sys/block/mmcblk0/queue/nr_requests 256
@@ -67,13 +66,11 @@ on init
     chmod 0660 /dev/tfa9887
     chmod 0666 /dev/modemctl
     chmod 0666 /dev/audience_es305
-#    chmod 0660 /dev/ttyAMA1
     chmod 777 /dev/tpa2028_l
     chmod 777 /dev/tpa2028_r
     chmod 777 /dev/tpa6132
     chmod 777 /dev/spk_5vboost
     chown media media /dev/tfa9887
-#    chown media media /dev/ttyAMA1
 
     chown system system /dev/log/switch
     chmod 0660 /dev/log/switch

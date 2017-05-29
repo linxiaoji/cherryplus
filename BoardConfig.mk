@@ -40,7 +40,7 @@ BOARD_VENDOR_PLATFORM := hi6210sft
 ENABLE_CPUSETS := true
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := hi6210sft,alice,cherryplus,cherryplus,Che2-L11,hwChe2,CHM-U01,chm-u01
+TARGET_OTA_ASSERT_DEVICE := hi6210sft,hwChe2,cherryplus,Che2-L11
 
 # Audio
 BOARD_USES_ALSA_AUDIO := true
@@ -158,4 +158,3 @@ WIFI_DRIVER_FW_PATH_PARAM := "/sys/module/bcmdhd/parameters/firmware_path"
 WIFI_DRIVER_MODULE_ARG    := "firmware_path=/system/vendor/firmware/fw_bcm4343s_hw.bin nvram_path=/vendor/firmware/nvram_CHERRY_PLUS_ED00.txt"
 
 WITH_DEXPREOPT := true
-DONT_DEXPREOPT_PREBUILTS := true

@@ -53,7 +53,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilts/device_monitor_for_nff.conf:system/etc/device_monitor_for_nff.conf \
     $(LOCAL_PATH)/prebuilts/device_state_monitor.conf:system/etc/device_state_monitor.conf \
     $(LOCAL_PATH)/prebuilts/hisi_cfg.ini:system/etc/hisi_cfg.ini \
-    $(LOCAL_PATH)/prebuilts/hisi_cfg_cherry.ini:system/etc/hisi_cfg_cherry.ini
+    $(LOCAL_PATH)/prebuilts/hisi_cfg_cherry.ini:system/etc/hisi_cfg_cherry.ini \
+    $(LOCAL_PATH)/prebuilts/hisi_omx.cfg.txt:system/etc/hisi_omx_cfg.txt
+
 
 # Thermal engine
 PRODUCT_COPY_FILES += \
@@ -111,9 +113,10 @@ PRODUCT_PACKAGES += \
 
 # Apps
 PRODUCT_PACKAGES += \
-	Chrome \
+	GChrome \
 	RootExplorer \
-	VK
+	VK \
+    CMWeatherProvider
 
 # KEYPAD
 PRODUCT_PACKAGES += \
@@ -123,8 +126,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     fstab.hi6210sft \
     init.chip.usb.rc \
-    init.connectivity.bcm43xx.rc \
-    init.connectivity.rc \
     init.hi6210sft.power.rc \
     init.hi6210sft.rc \
     init.hi6210sft.usb.rc \
