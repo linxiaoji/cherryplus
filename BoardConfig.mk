@@ -158,3 +158,4 @@ WIFI_DRIVER_FW_PATH_PARAM := "/sys/module/bcmdhd/parameters/firmware_path"
 WIFI_DRIVER_MODULE_ARG    := "firmware_path=/system/vendor/firmware/fw_bcm4343s_hw.bin nvram_path=/vendor/firmware/nvram_CHERRY_PLUS_ED00.txt"
 
 WITH_DEXPREOPT := true
+WITH_DEXPREOPT_PIC := true
