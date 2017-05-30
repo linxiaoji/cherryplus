@@ -148,7 +148,8 @@ PRODUCT_PACKAGES += \
 # Ambient
 PRODUCT_PACKAGES += \
     ambientsdk \
-    hwcomposer.hi6210sft
+    hwcomposer.hi6210sft \
+    lights.hi6210sft
 
 # GPS
 PRODUCT_PACKAGES += \
