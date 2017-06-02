@@ -113,10 +113,10 @@ PRODUCT_PACKAGES += \
 
 # Apps
 PRODUCT_PACKAGES += \
-	GChrome \
+    CMWeatherProvider \
 	RootExplorer \
-	VK \
-    CMWeatherProvider
+	VK
+    
 
 # KEYPAD
 PRODUCT_PACKAGES += \
@@ -164,8 +164,6 @@ PRODUCT_PACKAGES += \
     wpa_supplicant.conf
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/wifi/hostapd_hisi.conf:system/etc/wifi/hostapd_hisi.conf \
-    $(LOCAL_PATH)/wifi/wpa_supplicant_hisi.conf:system/etc/wifi/wpa_supplicant_hisi.conf \
     $(LOCAL_PATH)/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf 
 
 -include hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk

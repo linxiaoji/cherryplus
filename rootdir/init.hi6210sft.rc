@@ -1003,5 +1003,3 @@ service gpsd /system/bin/glgps -c /data/gps/gpsconfig.xml
     user root
     group system inet
     disabled
-
-
