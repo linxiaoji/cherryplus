@@ -15,6 +15,8 @@
 #
 
 $(call inherit-product-if-exists, vendor/huawei/cherryplus/cherryplus-vendor.mk)
+$(call inherit-product-if-exists, device/huawei/gapps/gapps.mk)
+$(call inherit-product-if-exists, device/huawei/apps/myapps.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
@@ -63,33 +65,35 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilts/thermald_performance.xml:system/etc/thermald_performance.xml
 
 # Permissions
+NATIVE_PATH := frameworks/native/data/etc
+PERM_PATH := system/etc/permissions
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
-    frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
-    frameworks/native/data/etc/android.hardware.camera.external.xml:system/etc/permissions/android.hardware.camera.external.xml \
-    frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
-    frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
-    frameworks/native/data/etc/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml \
-    frameworks/native/data/etc/android.software.midi.xml:system/etc/permissions/android.software.midi.xml \
-    frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
-    frameworks/native/data/etc/android.hardware.location.xml:system/etc/permissions/android.hardware.location.xml \
-    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
-    frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
-    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
-    frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
-    frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
-    frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
-    frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
-    frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
-    frameworks/native/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
-    frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
-    frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
-    frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
-    frameworks/native/data/etc/android.hardware.sensor.stepcounter.xml:system/etc/permissions/android.hardware.sensor.stepcounter.xml \
-    frameworks/native/data/etc/android.hardware.opengles.aep.xml:system/etc/permissions/android.hardware.opengles.aep.xml \
-    frameworks/native/data/etc/android.software.app_widgets.xml:system/etc/permissions/android.software.app_widgets.xml \
-    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
-#    $(LOCAL_PATH)/wifi/com.huawei.audioalgo.xml:system/etc/permissions/com.huawei.audioalgo.xml
+    $(NATIVE_PATH)/android.hardware.bluetooth.xml:$(PERM_PATH)/android.hardware.bluetooth.xml \
+    $(NATIVE_PATH)/android.hardware.bluetooth_le.xml:$(PERM_PATH)/android.hardware.bluetooth_le.xml \
+    $(NATIVE_PATH)/android.hardware.camera.external.xml:$(PERM_PATH)/android.hardware.camera.external.xml \
+    $(NATIVE_PATH)/android.hardware.camera.flash-autofocus.xml:$(PERM_PATH)/android.hardware.camera.flash-autofocus.xml \
+    $(NATIVE_PATH)/android.hardware.camera.front.xml:$(PERM_PATH)/android.hardware.camera.front.xml \
+    $(NATIVE_PATH)/android.hardware.camera.xml:$(PERM_PATH)/android.hardware.camera.xml \
+    $(NATIVE_PATH)/android.software.midi.xml:$(PERM_PATH)/android.software.midi.xml \
+    $(NATIVE_PATH)/android.hardware.location.gps.xml:$(PERM_PATH)/android.hardware.location.gps.xml \
+    $(NATIVE_PATH)/android.hardware.location.xml:$(PERM_PATH)/android.hardware.location.xml \
+    $(NATIVE_PATH)/android.hardware.telephony.gsm.xml:$(PERM_PATH)/android.hardware.telephony.gsm.xml \
+    $(NATIVE_PATH)/android.hardware.telephony.cdma.xml:$(PERM_PATH)/android.hardware.telephony.cdma.xml \
+    $(NATIVE_PATH)/android.hardware.touchscreen.multitouch.jazzhand.xml:$(PERM_PATH)/android.hardware.touchscreen.multitouch.jazzhand.xml \
+    $(NATIVE_PATH)/android.hardware.usb.accessory.xml:$(PERM_PATH)/android.hardware.usb.accessory.xml \
+    $(NATIVE_PATH)/android.hardware.usb.host.xml:$(PERM_PATH)/android.hardware.usb.host.xml \
+    $(NATIVE_PATH)/android.hardware.wifi.xml:$(PERM_PATH)/android.hardware.wifi.xml \
+    $(NATIVE_PATH)/android.software.sip.voip.xml:$(PERM_PATH)/android.software.sip.voip.xml \
+    $(NATIVE_PATH)/android.hardware.sensor.accelerometer.xml:$(PERM_PATH)/android.hardware.sensor.accelerometer.xml \
+    $(NATIVE_PATH)/android.hardware.sensor.compass.xml:$(PERM_PATH)/android.hardware.sensor.compass.xml \
+    $(NATIVE_PATH)/android.hardware.sensor.gyroscope.xml:$(PERM_PATH)/android.hardware.sensor.gyroscope.xml \
+    $(NATIVE_PATH)/android.hardware.sensor.light.xml:$(PERM_PATH)/android.hardware.sensor.light.xml \
+    $(NATIVE_PATH)/android.hardware.sensor.proximity.xml:$(PERM_PATH)/android.hardware.sensor.proximity.xml \
+    $(NATIVE_PATH)/android.hardware.sensor.stepcounter.xml:$(PERM_PATH)/android.hardware.sensor.stepcounter.xml \
+    $(NATIVE_PATH)/android.hardware.opengles.aep.xml:$(PERM_PATH)/android.hardware.opengles.aep.xml \
+    $(NATIVE_PATH)/android.software.app_widgets.xml:$(PERM_PATH)/android.software.app_widgets.xml \
+    $(NATIVE_PATH)/handheld_core_hardware.xml:$(PERM_PATH)/handheld_core_hardware.xml \
+    $(LOCAL_PATH)/etc/com.huawei.audioalgo.xml:$(PERM_PATH)/com.huawei.audioalgo.xml
 
 # Screen density
 PRODUCT_AAPT_CONFIG := normal
@@ -111,13 +115,6 @@ PRODUCT_PACKAGES += \
     tinymix \
     tinypcminfo
 
-# Apps
-PRODUCT_PACKAGES += \
-    CMWeatherProvider \
-	RootExplorer \
-	VK
-    
-
 # KEYPAD
 PRODUCT_PACKAGES += \
     usbaudio.kl
@@ -136,10 +133,11 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
 
 # adb as root
-ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
-ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=0
-ADDITIONAL_DEFAULT_PROPERTIES += security.perf_harden=0
-ADDITIONAL_DEFAULT_PROPERTIES += ro.allow.mock.location=1
+ADDITIONAL_DEFAULT_PROPERTIES += \
+    ro.secure=0 \
+    ro.adb.secure=0 \
+    security.perf_harden=0 \
+    ro.allow.mock.location=1
 
 # USB
 PRODUCT_PACKAGES += \
@@ -162,9 +160,6 @@ PRODUCT_PACKAGES += \
     hostapd \
     wpa_supplicant \
     wpa_supplicant.conf
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf 
 
 -include hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)

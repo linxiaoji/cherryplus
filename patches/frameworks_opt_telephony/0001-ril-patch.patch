@@ -8,8 +8,7 @@ Change-Id: Idac45c79a95d7a6406d849f87a646e3bea1fe74c
  src/java/android/telephony/SmsMessage.java         |  2 +-
  src/java/com/android/internal/telephony/RIL.java   | 45 ++++++-----
  .../telephony/dataconnection/DcTracker.java        |  3 -
- .../internal/telephony/uicc/IccFileHandler.java    | 91 +++++++---------------
- 4 files changed, 53 insertions(+), 88 deletions(-)
+ 3 files changed, 25 insertions(+), 25 deletions(-)
 
 diff --git a/src/java/android/telephony/SmsMessage.java b/src/java/android/telephony/SmsMessage.java
 index bf04c3d..03676b7 100644
