@@ -1,0 +1,35 @@
+From 656d3e8d5867cb393ef38c7776a56c1bff319c60 Mon Sep 17 00:00:00 2001
+From: ksrt12 <kazakov12stepan2012@live.ru>
+Date: Tue, 6 Jun 2017 12:40:05 +0300
+Subject: [PATCH] fix -Wno-deprecated
+
+Change-Id: I99b30be38a60a660846acad2d33ef1308bbbabc4
+---
+ driver/runtime/build_bc_lib_internal.mk | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/driver/runtime/build_bc_lib_internal.mk b/driver/runtime/build_bc_lib_internal.mk
+index 950f60f5..a1b7c513 100644
+--- a/driver/runtime/build_bc_lib_internal.mk
++++ b/driver/runtime/build_bc_lib_internal.mk
+@@ -40,6 +40,9 @@ bc_clang_cc1_cflags += -target-feature +long64
+ endif
+ bc_translated_clang_cc1_cflags := $(addprefix -Xclang , $(bc_clang_cc1_cflags))
+ 
++# Disable deprecated warnings, because we have to support even legacy APIs.
++bc_warning_flags := -Wno-deprecated -Werror
++
+ bc_cflags := -MD \
+              $(RS_VERSION_DEFINE) \
+              -std=c99 \
+@@ -50,6 +53,7 @@ bc_cflags := -MD \
+              -target $(BCC_RS_TRIPLE) \
+              -fsigned-char \
+              $($(LOCAL_2ND_ARCH_VAR_PREFIX)RS_TRIPLE_CFLAGS) \
++             $(bc_warning_flags) \
+              $(LOCAL_CFLAGS) \
+              $(bc_translated_clang_cc1_cflags) \
+              $(LOCAL_CFLAGS_$(my_32_64_bit_suffix))
+-- 
+2.13.0
+

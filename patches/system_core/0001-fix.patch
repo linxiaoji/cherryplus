@@ -1,0 +1,28 @@
+From ac447d30a6c6145c9fee73ec7cd3acf817c32322 Mon Sep 17 00:00:00 2001
+From: ksrt12 <kazakov12stepan2012@live.ru>
+Date: Tue, 6 Jun 2017 13:15:53 +0300
+Subject: [PATCH] fix
+
+Change-Id: I4e744e3c0bb8a15470ad5da74109cd9cf972ed4a
+---
+ libbacktrace/backtrace_test.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/libbacktrace/backtrace_test.cpp b/libbacktrace/backtrace_test.cpp
+index c6507557..9ebd6391 100644
+--- a/libbacktrace/backtrace_test.cpp
++++ b/libbacktrace/backtrace_test.cpp
+@@ -983,8 +983,8 @@ void RunReadTest(Backtrace* backtrace, uintptr_t read_addr) {
+           << "Offset at " << i << " length " << j << " wrote too much data";
+     }
+   }
+-  delete data;
+-  delete expected;
++  delete[] data;
++  delete[] expected;
+ }
+ 
+ TEST(libbacktrace, thread_read) {
+-- 
+2.13.0
+
