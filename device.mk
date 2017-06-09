@@ -15,7 +15,6 @@
 #
 
 $(call inherit-product-if-exists, vendor/huawei/cherryplus/cherryplus-vendor.mk)
-$(call inherit-product-if-exists, device/huawei/gapps/gapps.mk)
 $(call inherit-product-if-exists, device/huawei/apps/myapps.mk)
 
 # Overlays
