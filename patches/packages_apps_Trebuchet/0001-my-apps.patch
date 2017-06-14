@@ -5,11 +5,11 @@ Subject: [PATCH] my apps
 
 Change-Id: If861731bd8b8178035388cf0d94525948216d68a
 ---
- res/values/preferences_defaults.xml |  4 ++--
+ res/values/preferences_defaults.xml |  6 +++---
  res/xml/default_workspace_4x4.xml   | 45 +++++++++++++++----------------------
  res/xml/default_workspace_5x5.xml   |  6 ++---
  res/xml/default_workspace_5x6.xml   |  8 +++----
- 4 files changed, 27 insertions(+), 36 deletions(-)
+ 4 files changed, 28 insertions(+), 37 deletions(-)
 
 diff --git a/res/values/preferences_defaults.xml b/res/values/preferences_defaults.xml
 index 63c5e9c19..8651e83b9 100644
@@ -21,7 +21,8 @@ index 63c5e9c19..8651e83b9 100644
      <bool name="preferences_interface_drawer_hide_icon_labels_default">false</bool>
 -    <bool name="preferences_interface_drawer_compact_default">false</bool>
 +    <bool name="preferences_interface_drawer_compact_default">true</bool>
-     <bool name="preferences_interface_drawer_dark_default">true</bool>
+-    <bool name="preferences_interface_drawer_dark_default">true</bool>
++    <bool name="preferences_interface_drawer_dark_default">false</bool>
      <bool name="preferences_interface_general_icons_large_default">false</bool>
      <bool name="preferences_interface_use_scroller_default">true</bool>
 -    <bool name="preferences_interface_use_horizontal_scrubber_default">true</bool>

@@ -23,8 +23,9 @@ ro.bq.gpu_to_cpu_unsupported=1
 #
 # Media
 #
-persist.sys.sr_google_avc_enc=1
-persist.sys.google_avc_enc=0
+#persist.k3_video_encoder=false
+persist.google_h264_encoder=true
+persist.sr_GoogleH264Encoder=1
 media.stagefright.legacyencoder=true
 media.stagefright.less-secure=true
 
@@ -67,25 +68,7 @@ telephony.lteOnCdmaDevice=0
 telephony.lteOnGsmDevice=1
 
 ro.config.helix_enable=true
+ro.config.hw_useCtrlSocket=true
+ro.config.colorTemperature_K3=true
 
 persist.sys.isUsbOtgEnabled=true
-#
-# Meticulus Lights HAL
-#
-# lp(low power) battery below 25%
-# c (charging) battery above 25% below 90%
-# fp (full power) batter above 90%
-# n (notification)
-#
-# COLORS ARGB
-# red = 0xffff0000
-# yellow = 0xffffff00
-# green = 0xff00ff00
-# blue = 0xff0000ff
-# purple = 0xffff00ff
-# teal = 0xff00ffff
-persist.sys.stock_lights_HAL=false
-persist.sys.lights_HAL_lp=0xffff0000
-persist.sys.lights_HAL_c=0xffffff00
-persist.sys.lights_HAL_fp=0xff00ff00
-persist.sys.lights_HAL_n=0xffffffff

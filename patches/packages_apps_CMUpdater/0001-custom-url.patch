@@ -1,13 +1,13 @@
-From 7dd7b6419f27485a91b77ac6b63435f9214e5898 Mon Sep 17 00:00:00 2001
+From 798d30034fb318dad812eaec3e379baf4d1a9243 Mon Sep 17 00:00:00 2001
 From: ksrt12 <kazakov12stepan2012@live.ru>
-Date: Sat, 27 May 2017 16:48:23 +0300
+Date: Tue, 13 Jun 2017 23:34:05 +0300
 Subject: [PATCH] custom url
 
-Change-Id: I9d337996d127ec964f290613b89cf44d7d1030c1
+Change-Id: I1e3264c3594275d95e04e03c4bcbc19df1c9769b
 ---
  res/values/config.xml                                       | 2 +-
- src/com/cyanogenmod/updater/service/UpdateCheckService.java | 5 +----
- 2 files changed, 2 insertions(+), 5 deletions(-)
+ src/com/cyanogenmod/updater/service/UpdateCheckService.java | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/res/values/config.xml b/res/values/config.xml
 index 6f1e9cb..7a05372 100644
@@ -21,21 +21,20 @@ index 6f1e9cb..7a05372 100644
 +    <string name="conf_update_server_url_def" translatable="false">https://raw.githubusercontent.com/CM13-HI6210SFT/CMUpdater_API/cm-13.0/API</string>
  </resources>
 diff --git a/src/com/cyanogenmod/updater/service/UpdateCheckService.java b/src/com/cyanogenmod/updater/service/UpdateCheckService.java
-index 319f68b..d05cf8c 100644
+index 9fc81d6..4987840 100644
 --- a/src/com/cyanogenmod/updater/service/UpdateCheckService.java
 +++ b/src/com/cyanogenmod/updater/service/UpdateCheckService.java
-@@ -224,10 +224,7 @@ public class UpdateCheckService extends IntentService
-         if (TextUtils.isEmpty(updateUri)) {
-             updateUri = getString(R.string.conf_update_server_url_def);
+@@ -206,8 +206,8 @@ public class UpdateCheckService extends IntentService
          }
--
--        String incrementalVersion = SystemProperties.get("ro.build.version.incremental");
--        updateUri += "/v1/" + Utils.getDeviceType() + "/" + getRomType() + "/" + incrementalVersion;
--
-+		
+ 
+         String incrementalVersion = SystemProperties.get("ro.build.version.incremental");
+-        updateUri += "/v1/" + Utils.getDeviceType() + "/" +
+-                Utils.getInstalledBuildType() + "/" + incrementalVersion;
++        /*updateUri += "/v1/" + Utils.getDeviceType() + "/" +
++                Utils.getInstalledBuildType() + "/" + incrementalVersion;*/
+ 
          return URI.create(updateUri);
      }
- 
 -- 
 2.13.0
 
