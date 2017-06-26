@@ -18,7 +18,7 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
-# Inherit from cherryplus device
+# Inherit from kiwi device
 $(call inherit-product, device/huawei/cherryplus/device.mk)
 
 # Inherit some common CM stuff.

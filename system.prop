@@ -1,12 +1,23 @@
+# Android Run Time
+ro.sys.fw.dex2oat_thread_count=8
+
+# ActivityManager
+ro.config.max_starting_bg=8
+ro.sys.fw.use_trim_settings=true
+
 ro.sf.lcd_density=280
 ro.opengles.version=131072
+bastet.service.enable=true
 ro.bt.bdaddr_path=/data/misc/bluedroid/macbt
 ro.config.fm_type=libbcmfm_if
 ro.config.ipv4.mtu=1400
 gsm.fastdormancy.mode=3
 sys.refresh.dirty=1
 qemu.hw.mainkeys=1
-media.stagefright.use-awesome=false
+ro.config.hw_dts=true
+ro.config.widevine_level3=true
+drm.service.enabled=true
+net.tethering.noprovisioning=true
 
 # Camera
 ro.camera.beauty.algo.doc=1
@@ -14,20 +25,18 @@ ro.hwcamera.use.videosize.1080p=true
 ro.hwcamera.previeweffects=true
 persist.camera.cpp.duplication=false
 
+# Media
+media.stagefright.use-awesome=false
+media.stagefright.enable-player=true
+media.stagefright.enable-http=true
+media.stagefright.enable-aac=true
+media.stagefright.enable-qcp=true
+media.stagefright.enable-fma2dp=true
+media.stagefright.enable-scan=true
+
 # Performance
 ro.am.reschedule_service=true
-#
-# Graphics
-#
-ro.bq.gpu_to_cpu_unsupported=1
-#
-# Media
-#
-#persist.k3_video_encoder=false
-persist.google_h264_encoder=true
-persist.sr_GoogleH264Encoder=1
-media.stagefright.legacyencoder=true
-media.stagefright.less-secure=true
+ro.config.enable_rcc=true
 
 ro.hwui.texture_cache_size=72
 ro.hwui.texture_cache_flushrate=0.4
@@ -42,23 +51,18 @@ ro.hwui.text_small_cache_height=1024
 ro.hwui.text_small_cache_width=1024
 ro.hwui.r_buffer_cache_size=8
 debug.hwui.render_dirty_regions=false
+debug.sf.no_hw_vsync=1
 
 # RIL
-persist.dsds.enabled=true
-persist.radio.multisim.config=dsds
-persist.sys.dualcards=true
-ril.hw_modem0.rssi=-1
-ril.hw_modem1.rssi=-1
 rild.libargs=-m modem0
-rild.libargs1=-m modem1
 rild.libpath=/system/lib64/libbalong-ril.so
-rild.libpath1=/system/lib64/libbalong-ril-1.so
-ro.telephony.sim.count=2
-ro.telephony.ril_class=HuaweiRIL
+persist.radio.lte_enabled=true
+ro.telephony.ril.config=simactivation
+
+ro.telephony.ril_class=HwHisiRIL
 audioril.lib=libhuawei-audio-ril.so
 persist.radio.apm_sim_not_pwdn=1
-rild.rild1_ready_to_start=true
-ro.config.is_start_commril=true
+
 ro.config.hw_lte_support=true
 ro.config.hw_show_4G_Plus_icon=true
 ro.config.hw_show_network_icon=true
@@ -67,8 +71,14 @@ ro.telephony.ril.config=simactivation
 telephony.lteOnCdmaDevice=0
 telephony.lteOnGsmDevice=1
 
-ro.config.helix_enable=true
-ro.config.hw_useCtrlSocket=true
-ro.config.colorTemperature_K3=true
+# Storage
+ro.sys.sdcardfs=true
 
-persist.sys.isUsbOtgEnabled=true
+# Tethering
+#persist.sys.usb.config.extra=none
+
+ro.opa.eligible_device=true
+media.stagefright.legacyencoder=true
+media.stagefright.less-secure=true
+
+ro.config.hw_otgFeature=true

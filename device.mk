@@ -14,10 +14,8 @@
 # limitations under the License.
 #
 
-$(call inherit-product-if-exists, vendor/huawei/cherryplus/cherryplus-vendor.mk)
+$(call inherit-product, vendor/huawei/cherryplus/cherryplus-vendor.mk)
 $(call inherit-product-if-exists, device/huawei/apps/myapps.mk)
-$(call inherit-product-if-exists, device/huawei/libstagefright_soft.mk)
-$(call inherit-product-if-exists, device/huawei/apps/microg.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
@@ -54,9 +52,7 @@ PRODUCT_COPY_FILES += \
     $(NATIVE_PATH)/android.hardware.wifi.xml:$(PERM_PATH)/android.hardware.wifi.xml \
     $(NATIVE_PATH)/android.software.app_widgets.xml:$(PERM_PATH)/android.software.app_widgets.xml \
     $(NATIVE_PATH)/android.software.midi.xml:$(PERM_PATH)/android.software.midi.xml \
-    $(NATIVE_PATH)/android.software.sip.voip.xml:$(PERM_PATH)/android.software.sip.voip.xml \
     $(NATIVE_PATH)/handheld_core_hardware.xml:$(PERM_PATH)/handheld_core_hardware.xml
-#    $(LOCAL_PATH)/etc/com.huawei.audioalgo.xml:$(PERM_PATH)/com.huawei.audioalgo.xml
 
 # Screen density
 PRODUCT_AAPT_CONFIG := normal
@@ -73,6 +69,7 @@ PRODUCT_PACKAGES += \
     libaudioutils \
     libaudioroute \
     libtinyalsa \
+    libtinyxml \
     tinyplay \
     tinycap \
     tinymix \
@@ -108,14 +105,9 @@ PRODUCT_PACKAGES += \
 
 # Ambient
 PRODUCT_PACKAGES += \
-    ambientsdk \
-    hwcomposer.hi6210sft
+    ambientsdk
 
-# GPS
-PRODUCT_PACKAGES += \
-    libtinyxml
-
-# Wi-fi
+# Wifi
 PRODUCT_PACKAGES += \
     libwpa_client \
     dhcpcd.conf \
@@ -123,5 +115,17 @@ PRODUCT_PACKAGES += \
     wpa_supplicant \
     wpa_supplicant.conf
 
--include hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk
+# USB OTG support
+PRODUCT_PROPERTY_OVERRIDES += \
+	persist.sys.isUsbOtgEnabled=true
+
+# Use ART small mode
+#PRODUCT_PROPERTY_OVERRIDES += \
+#	dalvik.vm.dex2oat-filter=balanced \
+#	dalvik.vm.dex2oat-flags=--no-watch-dog \
+#	dalvik.vm.image-dex2oat-filter=speed  \
+#PRODUCT_PROPERTY_OVERRIDES += \
+#	persist.sys.root_access=1
+
+-include hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)

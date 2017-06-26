@@ -1,36 +1,28 @@
-From a45f62a72284104012c63611de5842f5b45cff3b Mon Sep 17 00:00:00 2001
+From 30377a3e97456f86b9130123a6e799b5a6712c15 Mon Sep 17 00:00:00 2001
 From: ksrt12 <kazakov12stepan2012@live.ru>
-Date: Wed, 31 May 2017 07:54:32 +0300
+Date: Wed, 21 Jun 2017 00:45:49 +0300
 Subject: [PATCH] ru
 
-Change-Id: I2cf72d1ec97a08f2611d574f93a9de40e73970e9
 ---
  target/product/core.mk      | 2 +-
  target/product/full_base.mk | 2 +-
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/target/product/core.mk b/target/product/core.mk
-index c340acd32..f962e381e 100644
+index 28558c55f..5f74ca1c6 100644
 --- a/target/product/core.mk
 +++ b/target/product/core.mk
-@@ -22,7 +22,6 @@
- 
- PRODUCT_PACKAGES += \
+@@ -24,7 +24,7 @@ PRODUCT_PACKAGES += \
      BasicDreams \
--    Browser \
+     BlockedNumberProvider \
+     BookmarkProvider \
+-    Browser2 \
++    GChrome \
      Calendar \
      CalendarProvider \
      CaptivePortalLogin \
-@@ -35,6 +34,7 @@ PRODUCT_PACKAGES += \
-     ExactCalculator \
-     ExternalStorageProvider \
-     FusedLocation \
-+	GChrome \
-     InputDevices \
-     KeyChain \
-     Keyguard \
 diff --git a/target/product/full_base.mk b/target/product/full_base.mk
-index bac3e030f..76c9fc7d9 100644
+index b98f0be57..1a542b890 100644
 --- a/target/product/full_base.mk
 +++ b/target/product/full_base.mk
 @@ -24,7 +24,7 @@ PRODUCT_PACKAGES := \

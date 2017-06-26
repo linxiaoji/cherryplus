@@ -1,0 +1,27 @@
+From acd113e1fecdbc0cb0d6b4944fca7563bc6d5167 Mon Sep 17 00:00:00 2001
+From: ksrt12 <kazakov12stepan2012@live.ru>
+Date: Sun, 25 Jun 2017 22:00:11 +0300
+Subject: [PATCH 2/2] my apps2
+
+Change-Id: I2574267359190574074a19aa32d490af0dbe5a44
+Signed-off-by: ksrt12 <kazakov12stepan2012@live.ru>
+---
+ res/xml/default_workspace_5x5.xml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/res/xml/default_workspace_5x5.xml b/res/xml/default_workspace_5x5.xml
+index b8e98cae9..81250262b 100644
+--- a/res/xml/default_workspace_5x5.xml
++++ b/res/xml/default_workspace_5x5.xml
+@@ -109,7 +109,7 @@
+         launcher:packageName="com.android.calendar"
+         launcher:className="com.android.calendar.AllInOneActivity"
+         launcher:screen="2"
+-        launcher:x="0"
++        launcher:x="2"
+         launcher:y="4" />
+ 
+     <favorite
+-- 
+2.13.0
+

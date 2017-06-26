@@ -1,0 +1,43 @@
+From 91a4c01cabc9a0e772a4ca29b7c8cc4622befd0f Mon Sep 17 00:00:00 2001
+From: fell978 <fell978@yandex.ru>
+Date: Fri, 2 Jun 2017 21:07:44 +0300
+Subject: [PATCH] Fix deep sleep issue
+
+Change-Id: Ic1b49c3f3d712bd9c41685bf2604eb8f934de4f6
+---
+ services/surfaceflinger/SurfaceFlinger_hwc1.cpp | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/services/surfaceflinger/SurfaceFlinger_hwc1.cpp b/services/surfaceflinger/SurfaceFlinger_hwc1.cpp
+index c99dd64..d020d70 100644
+--- a/services/surfaceflinger/SurfaceFlinger_hwc1.cpp
++++ b/services/surfaceflinger/SurfaceFlinger_hwc1.cpp
+@@ -96,6 +96,9 @@
+ 
+ #define DISPLAY_COUNT       1
+ 
++#define FBIOBLANK               0x4611
++#define FB_BLANK_UNBLANK        0
++
+ /*
+  * DEBUG_SCREENSHOTS: set to true to check that screenshots are not all
+  * black pixels.
+@@ -2701,6 +2704,16 @@ void SurfaceFlinger::setPowerModeInternal(const sp<DisplayDevice>& hw,
+         int mode) {
+     ALOGD("Set power mode=%d, type=%d flinger=%p", mode, hw->getDisplayType(),
+             this);
++
++    if (mode == 2) //Awaking the lcd
++    {
++	int fd, ret;
++	fd = open("/dev/graphics/fb0",O_WRONLY);
++	ret = ioctl(fd, FBIOBLANK, FB_BLANK_UNBLANK);
++
++	if (ret < 0)
++		ALOGE("Error waking up LCD: %d (%s)\n", ret, strerror(errno));
++    }
+     int32_t type = hw->getDisplayType();
+     int currentMode = hw->getPowerMode();
+ 
+-- 
+2.7.4

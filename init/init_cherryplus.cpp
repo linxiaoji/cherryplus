@@ -27,7 +27,7 @@
 
 #include <fstream>
 #include <string>
-
+#include <cstdlib>
 #include "vendor_init.h"
 #include "property_service.h"
 #include "log.h"
@@ -37,31 +37,42 @@
 
 void init_target_properties()
 {
-    char platform[PROP_VALUE_MAX];
     std::ifstream fin;
     std::string buf;
-    int rc;
 
-    rc = property_get("ro.board.platform", platform);
-    if (!rc || strncmp(platform, "hi6210sft", PROP_VALUE_MAX))
-        return;
+    std::string platform = property_get("ro.board.platform");
+    if (platform != ANDROID_TARGET) {
+	    return;
+    }
 
     fin.open("/sys/firmware/devicetree/base/hisi,product_name");
     while (getline(fin, buf))
-        if ((buf.find("CHERRY_PLUS_ED00") != std::string::npos) || (buf.find("CHERRY_PLUS_TL00") != std::string::npos) || (buf.find("CHERRY_PLUS_UL00") != std::string::npos))
+        if ((buf.find("ALICE_TLO2") != std::string::npos) || (buf.find("ALICE_TL21") != std::string::npos) || (buf.find("ALICE_TL23") != std::string::npos) || (buf.find("CHM-U01") != std::string::npos) || (buf.find("CHERRY_PLUS_ED00") != std::string::npos))
             break;
     fin.close();
 
-    if (buf.find("CHERRY_PLUS_TL00") != std::string::npos) {
-        property_set("ro.product.model", "Che2-TL00");	
+    if (buf.find("ALICE_TLO2") != std::string::npos) {
+        property_set("ro.product.model", "ALE-L02");
+        property_set("ro.build.description", "ALE-L02-user 6.0 HuaweiALE-L02 C190B575 release-keys");
+        property_set("ro.build.fingerprint", "Huawei/ALE-L02/hwALE-H:6.0/HuaweiALE-L02/C190B575:user/release-keys");
     }
-    else if (buf.find("CHERRY_PLUS_UL00") != std::string::npos) {
-        property_set("ro.product.model", "Che2-UL00");
+    else if (buf.find("ALICE_TL21") != std::string::npos) {
+        property_set("ro.product.model", "ALE-L21");
+        property_set("ro.build.description", "ALE-L21-user 6.0 HuaweiALE-L21 C432B596 release-keys");
+        property_set("ro.build.fingerprint", "Huawei/ALE-L21/hwALE-H:6.0/HuaweiALE-L21/C432B596:user/release-keys");	
+    }
+	else if (buf.find("CHM-U01") != std::string::npos) {
+        property_set("ro.product.model", "CHM-U01");
+        property_set("ro.build.description", "CHM-U01-user 6.0 HonorCHM-U01 C432B570 release-keys");
+        property_set("ro.build.fingerprint", "Honor/CHM-U01/hwCHM-H:6.0/HonorCHM-U01/C432B570:user/release-key");	
+    }
+    else if (buf.find("ALICE_TL23") != std::string::npos) {
+        property_set("ro.product.model", "ALE-L23");
+        property_set("ro.build.description", "ALE-L21-user 6.0 HuaweiALE-L21 C432B596 release-keys");
+        property_set("ro.build.fingerprint", "Huawei/ALE-L21/hwALE-H:6.0/HuaweiALE-L21/C432B596:user/release-keys");
     }
     else if (buf.find("CHERRY_PLUS_ED00") != std::string::npos) {
-        property_set("ro.product.device", "hwChe2");
         property_set("ro.product.model", "Che2-L11");
-        property_set("ro.product.name", "Che2-L11");
     }
     else {
 	property_set("ro.product.model", "hi6210sft");

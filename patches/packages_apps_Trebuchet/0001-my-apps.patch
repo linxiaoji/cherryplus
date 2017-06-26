@@ -1,37 +1,39 @@
-From 892b48e2881b43ccb544d0724fa151cc58f1b2a6 Mon Sep 17 00:00:00 2001
+From 03b81fdd8b073e5b3b6736d53ec895bc1362b971 Mon Sep 17 00:00:00 2001
 From: ksrt12 <kazakov12stepan2012@live.ru>
-Date: Tue, 30 May 2017 01:44:13 +0300
-Subject: [PATCH] my apps
+Date: Thu, 15 Jun 2017 20:08:42 +0300
+Subject: [PATCH 1/2] my apps
 
-Change-Id: If861731bd8b8178035388cf0d94525948216d68a
+Change-Id: I80703f720d790d387a065105feef03233f9a17cb
 ---
- res/values/preferences_defaults.xml |  6 +++---
- res/xml/default_workspace_4x4.xml   | 45 +++++++++++++++----------------------
- res/xml/default_workspace_5x5.xml   |  6 ++---
- res/xml/default_workspace_5x6.xml   |  8 +++----
- 4 files changed, 28 insertions(+), 37 deletions(-)
+ res/values/preferences_defaults.xml |   8 +--
+ res/xml/default_workspace_4x4.xml   |  48 ++++++---------
+ res/xml/default_workspace_5x5.xml   | 115 ++++++++++++++----------------------
+ res/xml/default_workspace_5x6.xml   |  11 ++--
+ 4 files changed, 71 insertions(+), 111 deletions(-)
 
 diff --git a/res/values/preferences_defaults.xml b/res/values/preferences_defaults.xml
-index 63c5e9c19..8651e83b9 100644
+index 63c5e9c19..39e5759e0 100644
 --- a/res/values/preferences_defaults.xml
 +++ b/res/values/preferences_defaults.xml
-@@ -4,11 +4,11 @@
+@@ -4,12 +4,12 @@
      <bool name="preferences_interface_homescreen_scrolling_wallpaper_scroll_default">true</bool>
      <bool name="preferences_interface_homescreen_hide_icon_labels_default">false</bool>
      <bool name="preferences_interface_drawer_hide_icon_labels_default">false</bool>
 -    <bool name="preferences_interface_drawer_compact_default">false</bool>
-+    <bool name="preferences_interface_drawer_compact_default">true</bool>
 -    <bool name="preferences_interface_drawer_dark_default">true</bool>
++    <bool name="preferences_interface_drawer_compact_default">true</bool>
 +    <bool name="preferences_interface_drawer_dark_default">false</bool>
      <bool name="preferences_interface_general_icons_large_default">false</bool>
      <bool name="preferences_interface_use_scroller_default">true</bool>
 -    <bool name="preferences_interface_use_horizontal_scrubber_default">true</bool>
+-    <bool name="preferences_interface_drawer_search_default">true</bool>
 +    <bool name="preferences_interface_use_horizontal_scrubber_default">false</bool>
-     <bool name="preferences_interface_drawer_search_default">true</bool>
++    <bool name="preferences_interface_drawer_search_default">false</bool>
      <bool name="preferences_interface_allow_rotation">false</bool>
      <bool name="preferences_interface_homescreen_remote_folder_default">false</bool>
+     <bool name="preferences_interface_drawer_remote_apps_default">false</bool>
 diff --git a/res/xml/default_workspace_4x4.xml b/res/xml/default_workspace_4x4.xml
-index 40172bd31..420e829b6 100644
+index fc4f4cba0..420e829b6 100644
 --- a/res/xml/default_workspace_4x4.xml
 +++ b/res/xml/default_workspace_4x4.xml
 @@ -35,9 +35,6 @@
@@ -103,21 +105,162 @@ index 40172bd31..420e829b6 100644
              launcher:packageName="org.cyanogenmod.gello.browser"
              launcher:className="com.android.browser.BrowserActivity" />
          <favorite
-@@ -194,9 +188,6 @@
+@@ -194,12 +188,6 @@
          <favorite
              launcher:packageName="com.cyngn.browser"
              launcher:className="com.android.browser.BrowserLauncher" />
 -        <favorite
 -            launcher:packageName="com.android.chrome"
 -            launcher:className="com.google.android.apps.chrome.Main" />
+-        <favorite
+-            launcher:packageName="org.lineageos.jelly"
+-            launcher:className="org.lineageos.jelly.MainActivity" />
      </resolve>
  
      <resolve
 diff --git a/res/xml/default_workspace_5x5.xml b/res/xml/default_workspace_5x5.xml
-index 5f8a621d8..e0adc8616 100644
+index 2851ee118..b8e98cae9 100644
 --- a/res/xml/default_workspace_5x5.xml
 +++ b/res/xml/default_workspace_5x5.xml
-@@ -185,6 +185,9 @@
+@@ -29,79 +29,50 @@
+         launcher:spanX="5"
+         launcher:spanY="2" />
+ 
+-    <!-- Google Folder -->
+-    <folder launcher:screen="1" launcher:x="0" launcher:y="4" launcher:title="@string/google_title">
+-        <favorite
+-            launcher:className="com.google.android.googlequicksearchbox.SearchActivity"
+-            launcher:packageName="com.google.android.googlequicksearchbox" />
+-        <favorite
+-            launcher:packageName="com.android.chrome"
+-            launcher:className="com.google.android.apps.chrome.Main" />
+-        <favorite
+-            launcher:className="com.google.android.gm.ConversationListActivityGmail"
+-            launcher:packageName="com.google.android.gm" />
+-        <favorite
+-            launcher:className="com.google.android.maps.MapsActivity"
+-            launcher:packageName="com.google.android.apps.maps" />
+-        <favorite
+-            launcher:className="com.google.android.youtube.app.honeycomb.Shell$HomeActivity"
+-            launcher:packageName="com.google.android.youtube" />
+-        <favorite
+-            launcher:className="com.google.android.apps.docs.app.NewMainProxyActivity"
+-            launcher:packageName="com.google.android.apps.docs" />
+-        <favorite
+-            launcher:className="com.google.android.talk.SigningInActivity"
+-            launcher:packageName="com.google.android.talk" />
+-        <favorite
+-            launcher:className="com.google.android.apps.photos.home.HomeActivity"
+-            launcher:packageName="com.google.android.apps.photos" />
+-        <favorite
+-            launcher:className="com.google.android.apps.wallet.entrypoint.WalletRootActivity"
+-            launcher:packageName="com.google.android.apps.walletnfcrel" />
+-        <favorite
+-            launcher:className="com.android.calendar.AllInOneActivity"
+-            launcher:packageName="com.google.android.calendar" />
+-        <favorite
+-            launcher:className="com.google.android.apps.plus.phone.HomeActivity"
+-            launcher:packageName="com.google.android.apps.plus" />
+-    </folder>
++    <!-- Google Play -->
++    <favorite
++            launcher:packageName="com.android.vending"
++            launcher:className="com.android.vending.AssetBrowserActivity"
++            launcher:screen="1"
++            launcher:x="0"
++            launcher:y="4" />
+ 
+-    <!-- Play Folder -->
+-    <folder launcher:screen="1" launcher:x="1" launcher:y="4" launcher:title="@string/play_folder_title">
+-        <favorite
+-            launcher:className="com.android.music.activitymanagement.TopLevelActivity"
+-            launcher:packageName="com.google.android.music" />
+-        <favorite
+-            launcher:className="com.google.android.youtube.videos.EntryPoint"
+-            launcher:packageName="com.google.android.videos" />
+-        <favorite
+-            launcher:className="com.google.android.gms.games.ui.destination.main.MainActivity"
+-            launcher:packageName="com.google.android.play.games" />
+-        <favorite
+-            launcher:className="com.google.android.apps.books.app.BooksActivity"
+-            launcher:packageName="com.google.android.apps.books" />
+-        <favorite
+-            launcher:className="com.google.apps.dots.android.app.activity.CurrentsStartActivity"
+-            launcher:packageName="com.google.android.apps.magazines" />
+-    </folder>
++    <favorite
++            launcher:packageName="com.android.calculator2"
++            launcher:className="com.android.calculator2.Calculator"
++            launcher:screen="1"
++            launcher:x="1"
++            launcher:y="4" />
+ 
+     <favorite
+-            launcher:packageName="com.cyngn.themestore"
+-            launcher:className="com.cyngn.themestore.ui.StoreActivity"
++            launcher:packageName="com.vkontakte.android"
++            launcher:className="com.vkontakte.android.MainActivity"
+             launcher:screen="1"
+-            launcher:x="3"
++            launcher:x="2"
+             launcher:y="4" />
+ 
+-    <resolve
++     <resolve
++        launcher:screen="1"
++        launcher:x="3"
++        launcher:y="4" >
++        <favorite
++            launcher:packageName="com.speedsoftware.rootexplorer"
++            launcher:className="com.speedsoftware.rootexplorer.RootExplorer" />
++        <favorite
++            launcher:packageName="com.cyngn.themestore"
++            launcher:className="com.cyngn.themestore.ui.StoreActivity" />
++    </resolve>
++
++     <resolve
+         launcher:screen="1"
+         launcher:x="4"
+         launcher:y="4" >
+         <favorite
+-            launcher:packageName="com.android.vending"
+-            launcher:className="com.android.vending.AssetBrowserActivity" />
++            launcher:packageName="com.google.android.gms"
++            launcher:className="com.google.android.gms.org.microg.gms.ui.SettingsActivity" />
+         <favorite
+-            launcher:packageName="org.cyanogenmod.theme.chooser"
+-            launcher:className="org.cyanogenmod.theme.chooser.ChooserActivity" />
++            launcher:packageName="org.cyanogenmod.audiofx"
++            launcher:className="org.cyanogenmod.audiofx.activity.ActivityMusic" />
+     </resolve>
+ 
+     <!-- Screen [2] -->
+@@ -135,8 +106,8 @@
+     </resolve>
+ 
+     <favorite
+-        launcher:packageName="com.cyanogenmod.eleven"
+-        launcher:className="com.cyanogenmod.eleven.ui.activities.HomeActivity"
++        launcher:packageName="com.android.calendar"
++        launcher:className="com.android.calendar.AllInOneActivity"
+         launcher:screen="2"
+         launcher:x="0"
+         launcher:y="4" />
+@@ -145,6 +116,13 @@
+         launcher:packageName="com.android.settings"
+         launcher:className="com.android.settings.Settings"
+         launcher:screen="2"
++        launcher:x="3"
++        launcher:y="4" />
++
++    <favorite
++        launcher:packageName="com.android.soundrecorder"
++        launcher:className="com.android.soundrecorder.SoundRecorder"
++        launcher:screen="2"
+         launcher:x="4"
+         launcher:y="4" />
+ 
+@@ -185,6 +163,9 @@
          launcher:screen="3"
          launcher:x="2"
          launcher:y="0" >
@@ -127,18 +270,21 @@ index 5f8a621d8..e0adc8616 100644
          <favorite
              launcher:packageName="org.cyanogenmod.gello.browser"
              launcher:className="com.android.browser.BrowserActivity" />
-@@ -194,9 +197,6 @@
+@@ -194,12 +175,6 @@
          <favorite
              launcher:packageName="com.cyngn.browser"
              launcher:className="com.android.browser.BrowserLauncher" />
 -        <favorite
 -            launcher:packageName="com.android.chrome"
 -            launcher:className="com.google.android.apps.chrome.Main" />
+-        <favorite
+-            launcher:packageName="org.lineageos.jelly"
+-            launcher:className="org.lineageos.jelly.MainActivity" />
      </resolve>
  
      <resolve
 diff --git a/res/xml/default_workspace_5x6.xml b/res/xml/default_workspace_5x6.xml
-index da0ac163c..84d5a084a 100644
+index d17f4426f..84d5a084a 100644
 --- a/res/xml/default_workspace_5x6.xml
 +++ b/res/xml/default_workspace_5x6.xml
 @@ -185,7 +185,10 @@
@@ -153,13 +299,16 @@ index da0ac163c..84d5a084a 100644
              launcher:packageName="org.cyanogenmod.gello.browser"
              launcher:className="com.android.browser.BrowserActivity" />
          <favorite
-@@ -194,9 +197,6 @@
+@@ -194,12 +197,6 @@
          <favorite
              launcher:packageName="com.cyngn.browser"
              launcher:className="com.android.browser.BrowserLauncher" />
 -        <favorite
 -            launcher:packageName="com.android.chrome"
 -            launcher:className="com.google.android.apps.chrome.Main" />
+-        <favorite
+-            launcher:packageName="org.lineageos.jelly"
+-            launcher:className="org.lineageos.jelly.MainActivity" />
      </resolve>
  
      <resolve
