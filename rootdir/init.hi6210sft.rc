@@ -819,6 +819,11 @@ on property:rild.rild1_ready_to_start=false
 on property:ro.hardware.alter=*
     write /proc/sys/kernel/hardware_alter ${ro.hardware.alter}
 
+service hwpged /system/bin/hwpged
+    class main
+    socket MsgHubSock stream 0660 root system
+    user root
+
 service macaddr /system/bin/mac_addr_normalization
     class core
     user root

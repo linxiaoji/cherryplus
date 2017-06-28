@@ -114,7 +114,9 @@ PRODUCT_PACKAGES += \
     hostapd \
     wpa_supplicant \
     wpa_supplicant.conf
-
+# Superuser
+# Wifi
+PRODUCT_PACKAGES += su
 # USB OTG support
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.sys.isUsbOtgEnabled=true
