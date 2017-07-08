@@ -1,6 +1,6 @@
 export WITH_SU=true;
 export USE_CCACHE=true;
-export RR_BUILDTYPE="Unofficial";
+export RR_BUILDTYPE="Nightly";
 export WITH_ROOT_METHOD="magisk";
 if [ -z $days_to_log ];then export days_to_log=0; fi
 #export USE_NINJA=false

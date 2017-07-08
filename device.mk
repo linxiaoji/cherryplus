@@ -114,9 +114,10 @@ PRODUCT_PACKAGES += \
     hostapd \
     wpa_supplicant \
     wpa_supplicant.conf
+
 # Superuser
-# Wifi
 PRODUCT_PACKAGES += su
+
 # USB OTG support
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.sys.isUsbOtgEnabled=true
@@ -128,6 +129,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 #	dalvik.vm.image-dex2oat-filter=speed  \
 #PRODUCT_PROPERTY_OVERRIDES += \
 #	persist.sys.root_access=1
+
+PRODUCT_PACKAGES += htop
 
 -include hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
