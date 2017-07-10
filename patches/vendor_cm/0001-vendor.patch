@@ -1,22 +1,19 @@
-From b00326556b424fa339aacddd704604c69e45ac31 Mon Sep 17 00:00:00 2001
+From aa1c1c343ad3702c05cb98148e0e670c7af86b42 Mon Sep 17 00:00:00 2001
 From: ksrt12 <kazakov12stepan2012@live.ru>
-Date: Fri, 23 Jun 2017 02:54:24 +0300
-Subject: [PATCH] =?UTF-8?q?=D0=9F=D1=82=20=D0=B8=D1=8E=D0=BD=2023=2002:54:?=
- =?UTF-8?q?24=20SPB=202017?=
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Date: Sun, 9 Jul 2017 13:09:19 +0700
+Subject: [PATCH] vendor
 
+Signed-off-by: ksrt12 <kazakov12stepan2012@live.ru>
 ---
- config/common.mk              | 18 ++----------------
- config/telephony.mk           |  2 +-
- prebuilt/Wallpaper/Android.mk | 10 ++++++++++
- tools/rr_variant.sh           |  2 ++
- 4 files changed, 15 insertions(+), 17 deletions(-)
+ config/common.mk                     | 20 +++-----------------
+ config/telephony.mk                  |  2 +-
+ prebuilt/Wallpaper/Android.mk        | 10 ++++++++++
+ tools/rr_variant.sh                  |  2 ++
+ 4 files changed, 16 insertions(+), 18 deletions(-)
  create mode 100644 prebuilt/Wallpaper/Android.mk
 
 diff --git a/config/common.mk b/config/common.mk
-index 35666672..84ef85ee 100644
+index 73ee74ea..900b09f3 100644
 --- a/config/common.mk
 +++ b/config/common.mk
 @@ -59,7 +59,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
@@ -55,8 +52,8 @@ index 35666672..84ef85ee 100644
      Trebuchet \
      AudioFX \
 -    CMFileManager \
-     Eleven \
 +    DeskClock \
+     Eleven \
      LockClock \
      CMSettingsProvider \
      ExactCalculator \
@@ -64,6 +61,15 @@ index 35666672..84ef85ee 100644
      LiveLockScreenService \
      WeatherProvider \
      OmniStyle \
+@@ -312,7 +298,7 @@ DEVICE_PACKAGE_OVERLAYS += vendor/cm/overlay/common
+ 
+ PRODUCT_VERSION = 5.8.3
+ ifneq ($(RR_BUILDTYPE),)
+-RR_VERSION := RR-N-v$(PRODUCT_VERSION)-$(shell date -u +%Y%m%d)-$(CM_BUILD)-$(RR_BUILDTYPE)
++RR_VERSION := RR-N-v$(PRODUCT_VERSION)-$(shell date -u +%Y%m%d)-$(CM_BUILD)-$(RR_BUILDTYPE)-b$(shell cat logs/.version)
+ else
+ RR_VERSION := RR-N-v$(PRODUCT_VERSION)-$(shell date -u +%Y%m%d)-$(CM_BUILD)
+ endif
 diff --git a/config/telephony.mk b/config/telephony.mk
 index 7773067c..2d2cfa31 100644
 --- a/config/telephony.mk

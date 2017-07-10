@@ -1,8 +1,7 @@
 From b3d4af0544f289928d2933805a1cf5a1484da6f8 Mon Sep 17 00:00:00 2001
 From: Meticulus <theonejohnnyd@gmail.com>
 Date: Sun, 18 Jun 2017 07:37:09 -0500
-Subject: [PATCH] "0001-SystemUI-don-t-show-no-sim-when-in-airplane-mode
- _______________________________
+Subject: [PATCH] "0001-SystemUI-don-t-show-no-sim-when-in-airplane-mode"
 
 *Previous From bdbdeafdf5bf6658c322ee87d61a712965cd8a24 Mon Sep 17 00:00:00 2001
 *Previous From: Meticulus <theonejohnnyd@gmail.com>

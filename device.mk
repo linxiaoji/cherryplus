@@ -122,6 +122,12 @@ PRODUCT_PACKAGES += su
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.sys.isUsbOtgEnabled=true
 
+ifeq ($(HISI_RIL),true)
+PRODUCT_PROPERTY_OVERRIDES += ro.telephony.ril_class=HwHisiRIL
+else
+PRODUCT_PROPERTY_OVERRIDES += ro.telephony.ril_class=HuaweiRIL
+endif
+
 # Use ART small mode
 #PRODUCT_PROPERTY_OVERRIDES += \
 #	dalvik.vm.dex2oat-filter=balanced \
@@ -130,7 +136,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 #PRODUCT_PROPERTY_OVERRIDES += \
 #	persist.sys.root_access=1
 
-PRODUCT_PACKAGES += htop
+PRODUCT_PACKAGES += htop Snap
 
 -include hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
