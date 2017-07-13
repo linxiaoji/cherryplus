@@ -1,18 +1,18 @@
-From c5cbb92f196c39b43ffb7d860c7b2df2dc4b76c4 Mon Sep 17 00:00:00 2001
+From b6a85fd4aab340423eb0136d7e4223f8d0a41ad7 Mon Sep 17 00:00:00 2001
 From: ksrt12 <kazakov12stepan2012@live.ru>
-Date: Tue, 27 Jun 2017 23:45:29 +0300
+Date: Thu, 13 Jul 2017 22:02:27 +0700
 Subject: [PATCH] CPU Fix by K4CZP3R
 
 Signed-off-by: ksrt12 <kazakov12stepan2012@live.ru>
 ---
- rootdir/init.rc | 21 +++++++++++++++------
- 1 file changed, 15 insertions(+), 6 deletions(-)
+ rootdir/init.rc | 32 ++++++++++++++++++++++----------
+ 1 file changed, 22 insertions(+), 10 deletions(-)
 
 diff --git a/rootdir/init.rc b/rootdir/init.rc
-index f48029ac0..646ed8261 100644
+index f48029ac0..155483d28 100644
 --- a/rootdir/init.rc
 +++ b/rootdir/init.rc
-@@ -153,6 +153,15 @@ on init
+@@ -153,32 +153,44 @@ on init
      write /dev/cpuctl/cpu.rt_period_us 1000000
      write /dev/cpuctl/cpu.rt_runtime_us 950000
  
@@ -28,9 +28,12 @@ index f48029ac0..646ed8261 100644
      # sets up initial cpusets for ActivityManager
      mkdir /dev/cpuset
      mount cpuset none /dev/cpuset
-@@ -160,14 +169,14 @@ on init
+ 
      # this ensures that the cpusets are present and usable, but the device's
      # init.rc must actually set the correct cpus
++
++    # CPU Fix by K4CZP3R
++
      mkdir /dev/cpuset/foreground
 -    write /dev/cpuset/foreground/cpus 0
 -    write /dev/cpuset/foreground/mems 0
@@ -49,6 +52,21 @@ index f48029ac0..646ed8261 100644
  
      # system-background is for system tasks that should only run on
      # little cores, not on bigs
+     # to be used only by init, so don't change system-bg permissions
+     mkdir /dev/cpuset/system-background
+-    write /dev/cpuset/system-background/cpus 0
+-    write /dev/cpuset/system-background/mems 0
++    write /dev/cpuset/system-background/cpus 4-7
++    write /dev/cpuset/system-background/mems 0-7
+ 
+     mkdir /dev/cpuset/top-app
+-    write /dev/cpuset/top-app/cpus 0
+-    write /dev/cpuset/top-app/mems 0
++    write /dev/cpuset/top-app/cpus 0-7
++    write /dev/cpuset/top-app/mems 0-7
+ 
+     # change permissions for all cpusets we'll touch at runtime
+     chown system system /dev/cpuset
 -- 
 2.13.0
 
