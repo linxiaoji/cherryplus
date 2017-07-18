@@ -135,7 +135,7 @@ TARGET_RECOVERY_DEVICE_MODULES := libinit_hi6210sft
 BOARD_USES_FULL_RECOVERY_IMAGE := true
 
 # RIL
-#HISI_RIL := true
+HISI_RIL := true
 ifeq ($(HISI_RIL),true)
 TARGET_GLOBAL_CFLAGS += -DDISABLE_ASHMEM_TRACKING
 PROTOBUF_SUPPORTED := true
@@ -169,6 +169,29 @@ WIFI_DRIVER_FW_PATH_STA   := "/vendor/firmware/fw_bcm4343s_hw.bin"
 WIFI_DRIVER_FW_PATH_P2P   := "/vendor/firmware/fw_bcm4343s_p2p_hw.bin"
 WIFI_DRIVER_FW_PATH_PARAM := "/sys/module/bcmdhd/parameters/firmware_path"
 WIFI_DRIVER_MODULE_ARG    := "firmware_path=/vendor/firmware/fw_bcm4343s_hw.bin nvram_path=/vendor/firmware/nvram_CHERRY_PLUS_ED00.txt"
+
+# TWRP
+RECOVERY_VARIANT := twrp
+TW_THEME := portrait_hdpi
+RECOVERY_SDCARD_ON_DATA := true
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
+TWHAVE_SELINUX := true
+TW_BRIGHTNESS_PATH := "/sys/devices/platform/balong_fb.1/leds/lcd_backlight0/brightness"
+TW_CUSTOM_BATTERY_PATH := "/sys/devices/battery.0/power_supply/Battery"
+TW_MAX_BRIGHTNESS := 255
+BOARD_HAS_NO_SELECT_BUTTON := true
+TW_SCREEN_BLANK_ON_BOOT := true
+TW_EXCLUDE_SUPERSU := true
+TW_FBIOPAN := true
+TW_DEFAULT_LANGUAGE := ru
+
+# Paths
+TW_EXTERNAL_STORAGE_PATH := "/external_sd"
+TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
+
+# USB Mounting
+BOARD_UMS_LUNFILE := "/sys/class/android_usb/android0/f_mass_storage/lun/file"
+
 WITH_DEXPREOPT := true
 #DONT_DEXPREOPT_PREBUILTS := true
 SHOW_COMMANDS := true

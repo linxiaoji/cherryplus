@@ -128,15 +128,18 @@ else
 PRODUCT_PROPERTY_OVERRIDES += ro.telephony.ril_class=HuaweiRIL
 endif
 
+# TWRP
+PRODUCT_COPY_FILES += $(LOCAL_PATH)/rootdir/twrp.fstab:recovery/root/etc/twrp.fstab
+
 # Use ART small mode
-#PRODUCT_PROPERTY_OVERRIDES += \
-#	dalvik.vm.dex2oat-filter=balanced \
-#	dalvik.vm.dex2oat-flags=--no-watch-dog \
-#	dalvik.vm.image-dex2oat-filter=speed  \
+PRODUCT_PROPERTY_OVERRIDES += \
+	dalvik.vm.dex2oat-filter=balanced \
+	dalvik.vm.dex2oat-flags=--no-watch-dog \
+	dalvik.vm.image-dex2oat-filter=speed
 #PRODUCT_PROPERTY_OVERRIDES += \
 #	persist.sys.root_access=1
 
-PRODUCT_PACKAGES += htop Snap
+PRODUCT_PACKAGES += htop
 
 -include hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)

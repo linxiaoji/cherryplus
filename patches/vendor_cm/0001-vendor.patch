@@ -1,19 +1,20 @@
-From aa1c1c343ad3702c05cb98148e0e670c7af86b42 Mon Sep 17 00:00:00 2001
+From c433525fec97c2814c213f220b27579976549135 Mon Sep 17 00:00:00 2001
 From: ksrt12 <kazakov12stepan2012@live.ru>
-Date: Sun, 9 Jul 2017 13:09:19 +0700
+Date: Fri, 14 Jul 2017 00:16:15 +0700
 Subject: [PATCH] vendor
 
 Signed-off-by: ksrt12 <kazakov12stepan2012@live.ru>
 ---
- config/common.mk                     | 20 +++-----------------
- config/telephony.mk                  |  2 +-
- prebuilt/Wallpaper/Android.mk        | 10 ++++++++++
- tools/rr_variant.sh                  |  2 ++
- 4 files changed, 16 insertions(+), 18 deletions(-)
+ config/common.mk              | 20 +++-----------------
+ config/data_only.mk           |  1 -
+ config/telephony.mk           |  3 +--
+ prebuilt/Wallpaper/Android.mk | 10 ++++++++++
+ tools/rr_variant.sh           |  2 ++
+ 5 files changed, 16 insertions(+), 20 deletions(-)
  create mode 100644 prebuilt/Wallpaper/Android.mk
 
 diff --git a/config/common.mk b/config/common.mk
-index 73ee74ea..900b09f3 100644
+index 73ee74ea..5d3b0433 100644
 --- a/config/common.mk
 +++ b/config/common.mk
 @@ -59,7 +59,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
@@ -70,11 +71,27 @@ index 73ee74ea..900b09f3 100644
  else
  RR_VERSION := RR-N-v$(PRODUCT_VERSION)-$(shell date -u +%Y%m%d)-$(CM_BUILD)
  endif
+diff --git a/config/data_only.mk b/config/data_only.mk
+index 55f48c03..746787ec 100644
+--- a/config/data_only.mk
++++ b/config/data_only.mk
+@@ -4,5 +4,4 @@ PRODUCT_COPY_FILES += \
+ 
+ # Telephony packages
+ PRODUCT_PACKAGES += \
+-    Stk \
+     CellBroadcastReceiver
+\ No newline at end of file
 diff --git a/config/telephony.mk b/config/telephony.mk
-index 7773067c..2d2cfa31 100644
+index 7773067c..f93fc5d0 100644
 --- a/config/telephony.mk
 +++ b/config/telephony.mk
-@@ -14,4 +14,4 @@ PRODUCT_PACKAGES += \
+@@ -9,9 +9,8 @@ PRODUCT_COPY_FILES += \
+ # Telephony packages
+ PRODUCT_PACKAGES += \
+     messaging \
+-    Stk \
+     CellBroadcastReceiver
  
  # Default ringtone
  PRODUCT_PROPERTY_OVERRIDES += \
