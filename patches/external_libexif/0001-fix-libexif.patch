@@ -1,0 +1,177 @@
+From 4b0130abb07fcbb8e89c21bc568780088c2473f6 Mon Sep 17 00:00:00 2001
+From: ksrt12 <kazakov12stepan2012@live.ru>
+Date: Thu, 20 Jul 2017 15:53:58 +0300
+Subject: [PATCH] fix libexif
+
+Change-Id: I7d410fbe1313b5767751501c661008c8a256094b
+---
+ Android.bp         | 70 +++++++++++++++++++++++++++++++++++++++++++++++
+ libexif/Android.mk | 79 ------------------------------------------------------
+ 2 files changed, 70 insertions(+), 79 deletions(-)
+ create mode 100644 Android.bp
+ delete mode 100644 libexif/Android.mk
+
+diff --git a/Android.bp b/Android.bp
+new file mode 100644
+index 0000000..f3d659b
+--- /dev/null
++++ b/Android.bp
+@@ -0,0 +1,70 @@
++//
++// Copyright (C) 2011-2012 The Android Open Source Project
++//
++// Licensed under the Apache License, Version 2.0 (the "License");
++// you may not use this file except in compliance with the License.
++// You may obtain a copy of the License at
++//
++//      http://www.apache.org/licenses/LICENSE-2.0
++//
++// Unless required by applicable law or agreed to in writing, software
++// distributed under the License is distributed on an "AS IS" BASIS,
++// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++// See the License for the specific language governing permissions and
++// limitations under the License.
++//
++
++cc_library_shared {
++    name: "libexif",
++    vendor_available: true,
++    srcs: [
++        "libexif/exif-byte-order.c",
++        "libexif/exif-content.c",
++        "libexif/exif-data.c",
++        "libexif/exif-entry.c",
++        "libexif/exif-format.c",
++        "libexif/exif-ifd.c",
++        "libexif/exif-loader.c",
++        "libexif/exif-log.c",
++        "libexif/exif-mem.c",
++        "libexif/exif-mnote-data.c",
++        "libexif/exif-tag.c",
++        "libexif/exif-utils.c",
++        "libexif/canon/exif-mnote-data-canon.c",
++        "libexif/canon/mnote-canon-entry.c",
++        "libexif/canon/mnote-canon-tag.c",
++        "libexif/olympus/exif-mnote-data-olympus.c",
++        "libexif/olympus/mnote-olympus-tag.c",
++        "libexif/olympus/mnote-olympus-entry.c",
++        "libexif/fuji/exif-mnote-data-fuji.c",
++        "libexif/fuji/mnote-fuji-entry.c",
++        "libexif/fuji/mnote-fuji-tag.c",
++        "libexif/pentax/exif-mnote-data-pentax.c",
++        "libexif/pentax/mnote-pentax-entry.c",
++        "libexif/pentax/mnote-pentax-tag.c",
++    ],
++
++    export_include_dirs: ["."],
++
++    cflags: [
++        "-ftrapv",
++        "-Wno-conversion",
++        "-Wno-unused-parameter",
++        "-Wno-missing-field-initializers",
++        "-Wno-switch",
++        "-Wno-absolute-value",
++        "-Werror",
++    ],
++
++    include_dirs: [
++        "external/libexif",
++    ],
++
++
++    shared_libs: [
++        "libcutils",
++        "libutils",
++        "liblog",
++    ],
++
++}
+diff --git a/libexif/Android.mk b/libexif/Android.mk
+deleted file mode 100644
+index 5a136d5..0000000
+--- a/libexif/Android.mk
++++ /dev/null
+@@ -1,79 +0,0 @@
+-#
+-# Copyright (C) 2013 The Android Open Source Project
+-#
+-# Licensed under the Apache License, Version 2.0 (the "License");
+-# you may not use this file except in compliance with the License.
+-# You may obtain a copy of the License at
+-#
+-#      http://www.apache.org/licenses/LICENSE-2.0
+-#
+-# Unless required by applicable law or agreed to in writing, software
+-# distributed under the License is distributed on an "AS IS" BASIS,
+-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+-# See the License for the specific language governing permissions and
+-# limitations under the License.
+-#
+-LOCAL_PATH := $(my-dir)
+-
+-include $(CLEAR_VARS)
+-
+-# WARNING: this makefile builds a shared library. Do not ever make it build
+-# a static library or otherwise statically link libexif with your code.
+-
+-LOCAL_CLANG := true
+-
+-LOCAL_C_INCLUDES := \
+-    $(TOP)/external/libexif
+-
+-LOCAL_SRC_FILES:= \
+-    exif-byte-order.c \
+-    exif-content.c \
+-    exif-data.c \
+-    exif-entry.c \
+-    exif-format.c \
+-    exif-ifd.c \
+-    exif-loader.c \
+-    exif-log.c \
+-    exif-mem.c \
+-    exif-mnote-data.c \
+-    exif-tag.c \
+-    exif-utils.c \
+-    canon/exif-mnote-data-canon.c \
+-    canon/mnote-canon-entry.c \
+-    canon/mnote-canon-tag.c \
+-    olympus/exif-mnote-data-olympus.c \
+-    olympus/mnote-olympus-tag.c \
+-    olympus/mnote-olympus-entry.c \
+-    fuji/exif-mnote-data-fuji.c \
+-    fuji/mnote-fuji-entry.c \
+-    fuji/mnote-fuji-tag.c \
+-    pentax/exif-mnote-data-pentax.c \
+-    pentax/mnote-pentax-entry.c \
+-    pentax/mnote-pentax-tag.c
+-
+-# Because all the include statements in the header files are in double layer
+-# ("libexif/XXXX.h") style, we need to set the export root to the parent folder.
+-LOCAL_EXPORT_C_INCLUDE_DIRS := $(LOCAL_PATH)/..
+-
+-LOCAL_MODULE := libexif
+-
+-LOCAL_SHARED_LIBRARIES := \
+-	libcutils \
+-	libutils \
+-	liblog
+-
+-LOCAL_CFLAGS += -ftrapv
+-
+-# Disable the following warnings. Fixing is tracked in b/27347470
+-LOCAL_CFLAGS += -Wno-conversion \
+-	-Wno-unused-parameter \
+-	-Wno-missing-field-initializers \
+-	-Wno-switch \
+-	-Wno-absolute-value \
+-	-Werror
+-
+-include $(BUILD_SHARED_LIBRARY)
+-
+-# WARNING: this makefile builds a shared library. Do not ever make it build
+-# a static library or otherwise statically link libexif with your code.
+-
+-- 
+2.13.0
+

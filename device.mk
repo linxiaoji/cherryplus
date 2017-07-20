@@ -62,19 +62,19 @@ PRODUCT_AAPT_PREF_CONFIG := xhdpi
 PRODUCT_TAGS += dalvik.gc.type-precise
 
 # Audio
-PRODUCT_PACKAGES += \
-    audio.primary.default \
-    audio.a2dp.default \
-    audio.usb.default \
-    audio.r_submix.default \
-    libaudioutils \
-    libaudioroute \
-    libtinyalsa \
-    libtinyxml \
-    tinyplay \
-    tinycap \
-    tinymix \
-    tinypcminfo
+#PRODUCT_PACKAGES += \
+#    audio.primary.default \
+#    audio.a2dp.default \
+#    audio.usb.default \
+#    audio.r_submix.default \
+#    libaudioutils \
+#    libaudioroute \
+#    libtinyalsa \
+#    libtinyxml \
+#    tinyplay \
+#    tinycap \
+#    tinymix \
+#    tinypcminfo
 
 # KEYPAD
 PRODUCT_PACKAGES += \
@@ -94,7 +94,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
 
 # adb as root
-ADDITIONAL_DEFAULT_PROPERTIES += \
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.secure=0 \
     ro.adb.secure=0 \
     security.perf_harden=0 \
@@ -116,7 +116,7 @@ PRODUCT_PACKAGES += \
     wpa_supplicant.conf
 
 # Superuser
-PRODUCT_PACKAGES += su
+PRODUCT_PACKAGES += su libexif
 
 # USB OTG support
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -130,6 +130,9 @@ endif
 
 # TWRP
 PRODUCT_COPY_FILES += $(LOCAL_PATH)/rootdir/twrp.fstab:recovery/root/etc/twrp.fstab
+
+# Kernel
+PRODUCT_COPY_FILES += $(LOCAL_PATH)/kernel:kernel
 
 # Use ART small mode
 PRODUCT_PROPERTY_OVERRIDES += \

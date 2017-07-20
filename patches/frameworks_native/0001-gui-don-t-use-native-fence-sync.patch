@@ -1,0 +1,94 @@
+From 9f7321d640abd6fa541485904a8fecf9252f7a55 Mon Sep 17 00:00:00 2001
+From: ksrt12 <kazakov12stepan2012@live.ru>
+Date: Thu, 20 Jul 2017 16:29:07 +0300
+Subject: [PATCH] gui: don't use native fence sync
+
+opengl: dont use swap buffers with damage
+
+Change-Id: I59778b4cae79eb24c4f30974b80672b2e039e617
+---
+ libs/gui/SyncFeatures.cpp  |  2 +-
+ opengl/libs/EGL/eglApi.cpp | 46 ++--------------------------------------------
+ 2 files changed, 3 insertions(+), 45 deletions(-)
+
+diff --git a/libs/gui/SyncFeatures.cpp b/libs/gui/SyncFeatures.cpp
+index 187b211be..4107ffc92 100644
+--- a/libs/gui/SyncFeatures.cpp
++++ b/libs/gui/SyncFeatures.cpp
+@@ -70,7 +70,7 @@ SyncFeatures::SyncFeatures() : Singleton<SyncFeatures>(),
+ bool SyncFeatures::useNativeFenceSync() const {
+     // EGL_ANDROID_native_fence_sync is not compatible with using the
+     // EGL_KHR_fence_sync extension for the same purpose.
+-    return mHasNativeFenceSync;
++    return false;
+ }
+ bool SyncFeatures::useFenceSync() const {
+ #ifdef DONT_USE_FENCE_SYNC
+diff --git a/opengl/libs/EGL/eglApi.cpp b/opengl/libs/EGL/eglApi.cpp
+index f8e25b489..72d3428e4 100644
+--- a/opengl/libs/EGL/eglApi.cpp
++++ b/opengl/libs/EGL/eglApi.cpp
+@@ -1061,7 +1061,7 @@ EGLBoolean eglSwapBuffersWithDamageKHR(EGLDisplay dpy, EGLSurface draw,
+     ATRACE_CALL();
+     clearError();
+ 
+-    const egl_display_ptr dp = validate_display(dpy);
++    const egl_display_ptr dp = get_display(dpy);
+     if (!dp) return EGL_FALSE;
+ 
+     SurfaceRef _s(dp.get(), draw);
+@@ -1070,50 +1070,8 @@ EGLBoolean eglSwapBuffersWithDamageKHR(EGLDisplay dpy, EGLSurface draw,
+ 
+     egl_surface_t const * const s = get_surface(draw);
+ 
+-    if (CC_UNLIKELY(dp->traceGpuCompletion)) {
+-        EGLSyncKHR sync = eglCreateSyncKHR(dpy, EGL_SYNC_FENCE_KHR, NULL);
+-        if (sync != EGL_NO_SYNC_KHR) {
+-            FrameCompletionThread::queueSync(sync);
+-        }
+-    }
+-
+-    if (CC_UNLIKELY(dp->finishOnSwap)) {
+-        uint32_t pixel;
+-        egl_context_t * const c = get_context( egl_tls_t::getContext() );
+-        if (c) {
+-            // glReadPixels() ensures that the frame is complete
+-            s->cnx->hooks[c->version]->gl.glReadPixels(0,0,1,1,
+-                    GL_RGBA,GL_UNSIGNED_BYTE,&pixel);
+-        }
+-    }
+-
+-    if (n_rects == 0) {
+-        return s->cnx->egl.eglSwapBuffers(dp->disp.dpy, s->surface);
+-    }
+-
+-    Vector<android_native_rect_t> androidRects;
+-    for (int r = 0; r < n_rects; ++r) {
+-        int offset = r * 4;
+-        int x = rects[offset];
+-        int y = rects[offset + 1];
+-        int width = rects[offset + 2];
+-        int height = rects[offset + 3];
+-        android_native_rect_t androidRect;
+-        androidRect.left = x;
+-        androidRect.top = y + height;
+-        androidRect.right = x + width;
+-        androidRect.bottom = y;
+-        androidRects.push_back(androidRect);
+-    }
+-    native_window_set_surface_damage(s->win.get(), androidRects.array(),
+-            androidRects.size());
++    return s->cnx->egl.eglSwapBuffers(dp->disp.dpy, s->surface);
+ 
+-    if (s->cnx->egl.eglSwapBuffersWithDamageKHR) {
+-        return s->cnx->egl.eglSwapBuffersWithDamageKHR(dp->disp.dpy, s->surface,
+-                rects, n_rects);
+-    } else {
+-        return s->cnx->egl.eglSwapBuffers(dp->disp.dpy, s->surface);
+-    }
+ }
+ 
+ EGLBoolean eglSwapBuffers(EGLDisplay dpy, EGLSurface surface)
+-- 
+2.13.0
+

@@ -1,0 +1,72 @@
+From b6a85fd4aab340423eb0136d7e4223f8d0a41ad7 Mon Sep 17 00:00:00 2001
+From: ksrt12 <kazakov12stepan2012@live.ru>
+Date: Thu, 13 Jul 2017 22:02:27 +0700
+Subject: [PATCH] CPU Fix by K4CZP3R
+
+Signed-off-by: ksrt12 <kazakov12stepan2012@live.ru>
+---
+ rootdir/init.rc | 32 ++++++++++++++++++++++----------
+ 1 file changed, 22 insertions(+), 10 deletions(-)
+
+diff --git a/rootdir/init.rc b/rootdir/init.rc
+index f48029ac0..155483d28 100644
+--- a/rootdir/init.rc
++++ b/rootdir/init.rc
+@@ -153,32 +153,44 @@ on init
+     write /dev/cpuctl/cpu.rt_period_us 1000000
+     write /dev/cpuctl/cpu.rt_runtime_us 950000
+ 
++    mkdir /dev/cpuctl/bg_non_interactive
++    chown system system /dev/cpuctl/bg_non_interactive/tasks
++    chmod 0666 /dev/cpuctl/bg_non_interactive/tasks
++    # 5.0 %
++    write /dev/cpuctl/bg_non_interactive/cpu.shares 52
++    write /dev/cpuctl/bg_non_interactive/cpu.rt_period_us 1000000
++    # active FIFO threads will never be in BG
++    write /dev/cpuctl/bg_non_interactive/cpu.rt_runtime_us 10000
++
+     # sets up initial cpusets for ActivityManager
+     mkdir /dev/cpuset
+     mount cpuset none /dev/cpuset
+ 
+     # this ensures that the cpusets are present and usable, but the device's
+     # init.rc must actually set the correct cpus
++
++    # CPU Fix by K4CZP3R
++
+     mkdir /dev/cpuset/foreground
+-    write /dev/cpuset/foreground/cpus 0
+-    write /dev/cpuset/foreground/mems 0
++    write /dev/cpuset/foreground/cpus 0-7
++    write /dev/cpuset/foreground/mems 0-7
+     mkdir /dev/cpuset/foreground/boost
+-    write /dev/cpuset/foreground/boost/cpus 0
+-    write /dev/cpuset/foreground/boost/mems 0
++    write /dev/cpuset/foreground/boost/cpus 0-7
++    write /dev/cpuset/foreground/boost/mems 0-7
+     mkdir /dev/cpuset/background
+-    write /dev/cpuset/background/cpus 0
+-    write /dev/cpuset/background/mems 0
++    write /dev/cpuset/background/cpus 1
++    write /dev/cpuset/background/mems 0-7
+ 
+     # system-background is for system tasks that should only run on
+     # little cores, not on bigs
+     # to be used only by init, so don't change system-bg permissions
+     mkdir /dev/cpuset/system-background
+-    write /dev/cpuset/system-background/cpus 0
+-    write /dev/cpuset/system-background/mems 0
++    write /dev/cpuset/system-background/cpus 4-7
++    write /dev/cpuset/system-background/mems 0-7
+ 
+     mkdir /dev/cpuset/top-app
+-    write /dev/cpuset/top-app/cpus 0
+-    write /dev/cpuset/top-app/mems 0
++    write /dev/cpuset/top-app/cpus 0-7
++    write /dev/cpuset/top-app/mems 0-7
+ 
+     # change permissions for all cpusets we'll touch at runtime
+     chown system system /dev/cpuset
+-- 
+2.13.0
+

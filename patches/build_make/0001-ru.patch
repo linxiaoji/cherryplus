@@ -1,0 +1,47 @@
+From b8f683f70f6d61fe916a6d28ffa7520ab59325a9 Mon Sep 17 00:00:00 2001
+From: ksrt12 <kazakov12stepan2012@live.ru>
+Date: Thu, 20 Jul 2017 14:26:19 +0300
+Subject: [PATCH] ru
+
+Change-Id: Ie9b206ab692790774afa339ec6b93a7f6bd91c20
+---
+ target/product/core.mk      | 2 +-
+ target/product/full_base.mk | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/target/product/core.mk b/target/product/core.mk
+index 72a7e8d6b..40a70f71b 100644
+--- a/target/product/core.mk
++++ b/target/product/core.mk
+@@ -24,7 +24,6 @@ PRODUCT_PACKAGES += \
+     BasicDreams \
+     BlockedNumberProvider \
+     BookmarkProvider \
+-    Browser2 \
+     BuiltInPrintService \
+     Calendar \
+     CalendarProvider \
+@@ -38,6 +37,7 @@ PRODUCT_PACKAGES += \
+     ExactCalculator \
+     ExternalStorageProvider \
+     FusedLocation \
++    GChrome \
+     InputDevices \
+     KeyChain \
+     Keyguard \
+diff --git a/target/product/full_base.mk b/target/product/full_base.mk
+index 65bdf0f1b..2a4b5982b 100644
+--- a/target/product/full_base.mk
++++ b/target/product/full_base.mk
+@@ -43,7 +43,7 @@ PRODUCT_PROPERTY_OVERRIDES := \
+     ro.config.notification_sound=pixiedust.ogg
+ 
+ # Put en_US first in the list, so make it default.
+-PRODUCT_LOCALES := en_US
++PRODUCT_LOCALES := ru_RU
+ 
+ # Get some sounds
+ $(call inherit-product-if-exists, frameworks/base/data/sounds/AllAudio.mk)
+-- 
+2.13.0
+

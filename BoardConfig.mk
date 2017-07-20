@@ -98,7 +98,7 @@ TARGET_NO_RPC := true
 
 # For TEST
 # Non PIE Support to run GPS
-TARGET_NEEDS_NON_PIE_SUPPORT := true
+#TARGET_NEEDS_NON_PIE_SUPPORT := true
 
 # Kernel
 BOARD_KERNEL_IMAGE_NAME := Image
