@@ -116,7 +116,7 @@ PRODUCT_PACKAGES += \
     wpa_supplicant.conf
 
 # Superuser
-PRODUCT_PACKAGES += su
+PRODUCT_PACKAGES += su hwcomposer.hi6210sft
 
 # USB OTG support
 PRODUCT_PROPERTY_OVERRIDES += \

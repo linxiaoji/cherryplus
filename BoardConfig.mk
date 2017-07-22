@@ -143,9 +143,6 @@ BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/hisi_ril
 else
 BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/huawei_ril
 endif
-BOARD_PROVIDES_LIBRIL := true
-BOARD_PROVIDES_RILD := true
-BOARD_PROVIDES_LIBREFERENCE_RIL := true
 SIM_COUNT := 2
 
 # Enable WEBGL
