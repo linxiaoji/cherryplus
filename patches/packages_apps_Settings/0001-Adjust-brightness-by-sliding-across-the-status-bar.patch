@@ -1,0 +1,25 @@
+From 3ca2201628c4fa0f85c9aa4c724db844c94683a7 Mon Sep 17 00:00:00 2001
+From: ksrt12 <kazakov12stepan2012@live.ru>
+Date: Mon, 24 Jul 2017 01:28:27 +0300
+Subject: [PATCH] Adjust brightness by sliding across the status bar
+
+---
+ res/xml/rr_statusbar_gestures.xml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/res/xml/rr_statusbar_gestures.xml b/res/xml/rr_statusbar_gestures.xml
+index d02e2e1671..3d64375003 100644
+--- a/res/xml/rr_statusbar_gestures.xml
++++ b/res/xml/rr_statusbar_gestures.xml
+@@ -24,7 +24,7 @@
+         android:key="status_bar_brightness_control"
+         android:title="@string/status_bar_toggle_brightness"
+         android:summary="@string/status_bar_toggle_brightness_summary"
+-        android:defaultValue="false" />
++        android:defaultValue="true" />
+ 
+ 
+     <!-- Double tap to sleep -->
+-- 
+2.13.0
+

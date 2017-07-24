@@ -1,0 +1,32 @@
+From 17e229efe275a246cded13fe52bb45a79bc59863 Mon Sep 17 00:00:00 2001
+From: ksrt12 <kazakov12stepan2012@live.ru>
+Date: Sun, 23 Jul 2017 02:42:43 +0300
+Subject: [PATCH] add ota
+
+---
+ res/xml/device_info_settings.xml | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/res/xml/device_info_settings.xml b/res/xml/device_info_settings.xml
+index c032d882e8..69262bda23 100644
+--- a/res/xml/device_info_settings.xml
++++ b/res/xml/device_info_settings.xml
+@@ -41,6 +41,15 @@
+                 android:summary="@string/mod_version_default"
+                 android:icon="@drawable/rr_mod_version_icon"/>
+ 
++        <PreferenceScreen
++            android:key="update_settings"
++            android:title="@string/updater_title"
++            android:summary="@string/rr_updater_summary">
++            <intent android:action="android.intent.action.MAIN"
++                    android:targetPackage="com.resurrection.ota"
++                    android:targetClass="com.resurrection.ota.MainActivity" />
++       </PreferenceScreen>
++
+         <!-- About Resurrection -->        
+         <PreferenceScreen
+                 android:key="about_rom"
+-- 
+2.13.0
+
