@@ -115,8 +115,7 @@ PRODUCT_PACKAGES += \
     wpa_supplicant \
     wpa_supplicant.conf
 
-# Superuser
-PRODUCT_PACKAGES += su hwcomposer.hi6210sft
+PRODUCT_PACKAGES += htop
 
 # USB OTG support
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -138,8 +137,6 @@ PRODUCT_COPY_FILES += $(LOCAL_PATH)/rootdir/twrp.fstab:recovery/root/etc/twrp.fs
 #	dalvik.vm.image-dex2oat-filter=speed
 #PRODUCT_PROPERTY_OVERRIDES += \
 #	persist.sys.root_access=1
-
-PRODUCT_PACKAGES += htop
 
 -include hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
