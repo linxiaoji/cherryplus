@@ -1,7 +1,7 @@
-From c433525fec97c2814c213f220b27579976549135 Mon Sep 17 00:00:00 2001
+From 95f0436056b68fec7a5515fb64f14c1948ac3281 Mon Sep 17 00:00:00 2001
 From: ksrt12 <kazakov12stepan2012@live.ru>
 Date: Fri, 14 Jul 2017 00:16:15 +0700
-Subject: [PATCH] vendor
+Subject: [PATCH 1/2] vendor
 
 Signed-off-by: ksrt12 <kazakov12stepan2012@live.ru>
 ---

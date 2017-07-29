@@ -834,6 +834,13 @@ service gpsdaemon /system/bin/gpsdaemon
     class main
     oneshot
 
+service gpsd /system/bin/glgps -c /system/etc/gpsconfig.xml
+    socket gps seqpacket 660 root root
+    class main
+    user root
+    group system inet
+    disabled
+
 service wifi_wakeup_src /system/bin/wifiwakeupsrc
     class core
     user root
@@ -896,13 +903,6 @@ service iprenew_bnep0 /system/bin/dhcpcd -n
     class main
     disabled
     oneshot
-
-service gpsd /system/bin/glgps -c /data/gps/gpsconfig.xml
-    socket gps seqpacket 660 root root
-    class main
-    user root
-    group system inet
-    disabled
 
 on late-init
    rmdir /dev/cpuctl/top_visible

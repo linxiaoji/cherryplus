@@ -132,10 +132,10 @@ endif
 PRODUCT_COPY_FILES += $(LOCAL_PATH)/rootdir/twrp.fstab:recovery/root/etc/twrp.fstab
 
 # Use ART small mode
-PRODUCT_PROPERTY_OVERRIDES += \
-	dalvik.vm.dex2oat-filter=balanced \
-	dalvik.vm.dex2oat-flags=--no-watch-dog \
-	dalvik.vm.image-dex2oat-filter=speed
+#PRODUCT_PROPERTY_OVERRIDES += \
+#	dalvik.vm.dex2oat-filter=balanced \
+#	dalvik.vm.dex2oat-flags=--no-watch-dog \
+#	dalvik.vm.image-dex2oat-filter=speed
 #PRODUCT_PROPERTY_OVERRIDES += \
 #	persist.sys.root_access=1
 
