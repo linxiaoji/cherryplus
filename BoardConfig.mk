@@ -166,7 +166,7 @@ WIFI_DRIVER_FW_PATH_AP    := "/vendor/firmware/fw_bcm4343s_apsta_hw.bin"
 WIFI_DRIVER_FW_PATH_STA   := "/vendor/firmware/fw_bcm4343s_hw.bin"
 WIFI_DRIVER_FW_PATH_P2P   := "/vendor/firmware/fw_bcm4343s_p2p_hw.bin"
 WIFI_DRIVER_FW_PATH_PARAM := "/sys/module/bcmdhd/parameters/firmware_path"
-WIFI_DRIVER_MODULE_ARG    := "firmware_path=/vendor/firmware/fw_bcm4343s_hw.bin nvram_path=/vendor/firmware/nvram_CHERRY_PLUS_ED00.txt"
+WIFI_DRIVER_MODULE_ARG    := "firmware_path=/vendor/firmware/fw_bcm4343s_hw.bin nvram_path=/vendor/firmware/nvram_CHERRY_PLUS_UL00.txt"
 
 # TWRP
 RECOVERY_VARIANT := twrp
@@ -186,6 +186,9 @@ TW_DEFAULT_LANGUAGE := ru
 # Paths
 TW_EXTERNAL_STORAGE_PATH := "/external_sd"
 TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
+
+# Sepolicy
+BOARD_SEPOLICY_DIRS += device/huawei/cherryplus/sepolicy
 
 # USB Mounting
 BOARD_UMS_LUNFILE := "/sys/class/android_usb/android0/f_mass_storage/lun/file"

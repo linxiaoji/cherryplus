@@ -16,5 +16,5 @@
 /dev/block/platform/hi_mci.0/by-name/boot      	/boot          	emmc    defaults                                                 						defaults
 /dev/block/platform/hi_mci.0/by-name/recovery  	/recovery      	emmc    defaults                                                 						defaults
 
-/devices/hi_mci.1/mmc_host/mmc1/*              	auto           	vfat    defaults												voldmanaged=sdcard1:auto,noemulatedsd,encryptable=userdata
-/devices/hi6xxx-usb-otg/usb1/*		      	auto           	auto    defaults												voldmanaged=usbotg:auto
+/devices/hi_mci.1/mmc_host/mmc1/*              	auto           	auto    defaults												voldmanaged=sdcard1:auto,noemulatedsd,encryptable=userdata
+/devices/hi6xxx-usb-otg/usb1*		      	auto           	auto    defaults												voldmanaged=usb:auto

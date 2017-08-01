@@ -1,0 +1,6 @@
+# gpslogd daemon
+type gpslogd, domain, domain_deprecated;
+type gpslogd_exec, exec_type, file_type;
+
+# Started by init
+init_daemon_domain(gpslogd)

@@ -116,6 +116,9 @@ PRODUCT_PACKAGES += \
     wpa_supplicant.conf
 
 PRODUCT_PACKAGES += htop
+PRODUCT_PACKAGES += \
+	libshim_icu \
+	libshim_wvm
 
 # USB OTG support
 PRODUCT_PROPERTY_OVERRIDES += \
