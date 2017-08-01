@@ -121,7 +121,6 @@
 /system/bin/thermal-daemon	u:object_r:thermal-daemon_exec:s0
 /system/bin/diagserver		u:object_r:diagserver_exec:s0
 /system/bin/hwnffserver		u:object_r:hwnffserver_exec:s0
-/system/bin/hwpged			u:object_r:hwpged_exec:s0
 
 # gps
 /system/bin/gpsdaemon		u:object_r:gpsdaemon_exec:s0
