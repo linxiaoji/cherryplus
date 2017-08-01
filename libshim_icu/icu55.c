@@ -71,4 +71,3 @@ ucnv_convertEx_55(UConverter *targetCnv, UConverter *sourceCnv,
                    pivotStart, pivotSource, pivotTarget, pivotLimit, reset, flush,
                    pErrorCode);
 }
-

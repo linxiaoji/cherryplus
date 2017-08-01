@@ -157,7 +157,7 @@ on early-fs
     start oeminfo_nvm
 
 on fs
-    export LD_SHIM_LIBS /system/bin/glgps|libshim_icu.so:/system/bin/hwpged|libshim_hwpged:/system/bin/logserver|libshim_log.so:/system/bin/thermal-daemon|libshim_log.so:/system/lib/libdmd.so|libshim_log.so:/system/lib64/libdmd.so|libshim_log.so:/system/lib/libcamera_post_mediaserver.so|libshim_exif.so:/system/lib/libhuaweiprocessing.so|libshim_icu.so:/system/lib/libsensorsgps.so|libshim_gui.so:/system/lib/libcamera_core.so|libshim_exif.so:/system/lib/libcamera_core.so|libshim_gui.so:/system/lib/libcamera_core.so|libshim_camera.so:/system/lib/hw/audio.primary.hi6210sft.so|libshim_audioroute.so:/system/lib/hw/audio.primary.hi6210sft.so|libshim_icu.so:/system/lib64/hw/audio.primary.hi6210sft.so|libshim_audioroute.so:/system/lib64/hw/audio.primary.hi6210sft.so|libshim_icu.so:/system/vendor/lib/libwvm.so|libshim_wvm.so:/system/lib/libril.so|libshim_icu.so:/system/lib64/libril.so|libshim_icu.so:/system/bin/hostapd|libshim_ssl2.so
+    export LD_SHIM_LIBS /system/bin/glgps|libshim_icu.so:/system/bin/logserver|libshim_log.so:/system/bin/thermal-daemon|libshim_log.so:/system/lib/libdmd.so|libshim_log.so:/system/lib64/libdmd.so|libshim_log.so:/system/lib/libcamera_post_mediaserver.so|libshim_exif.so:/system/lib/libhuaweiprocessing.so|libshim_icu.so:/system/lib/libsensorsgps.so|libshim_gui.so:/system/lib/libcamera_core.so|libshim_exif.so:/system/lib/libcamera_core.so|libshim_gui.so:/system/lib/libcamera_core.so|libshim_camera.so:/system/lib/hw/audio.primary.hi6210sft.so|libshim_audioroute.so:/system/lib/hw/audio.primary.hi6210sft.so|libshim_icu.so:/system/lib64/hw/audio.primary.hi6210sft.so|libshim_audioroute.so:/system/lib64/hw/audio.primary.hi6210sft.so|libshim_icu.so:/system/vendor/lib/libwvm.so|libshim_wvm.so:/system/lib/libril.so|libshim_icu.so:/system/lib64/libril.so|libshim_icu.so:/system/bin/hostapd|libshim_ssl2.so
 
     wait /dev/block/platform/hi_mci.0
     mount_all /fstab.hi6210sft
@@ -819,10 +819,10 @@ on property:rild.rild1_ready_to_start=false
 on property:ro.hardware.alter=*
     write /proc/sys/kernel/hardware_alter ${ro.hardware.alter}
 
-service hwpged /system/bin/hwpged
-    class main
-    socket MsgHubSock stream 0660 root system
-    user root
+#service hwpged /system/bin/hwpged
+#    class main
+#    socket MsgHubSock stream 0660 root system
+#    user root
 
 service macaddr /system/bin/mac_addr_normalization
     class core

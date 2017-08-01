@@ -16,8 +16,8 @@ LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
-LOCAL_SHARED_LIBRARIES := libicuuc libicui18n
+LOCAL_SHARED_LIBRARIES := libicuuc libicui18n libgui
 LOCAL_MODULE := libshim_icu
-LOCAL_SRC_FILES := icu55.c
+LOCAL_SRC_FILES := icu55.c glgps.cpp
 
 include $(BUILD_SHARED_LIBRARY)
