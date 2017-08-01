@@ -118,6 +118,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += htop
 PRODUCT_PACKAGES += \
 	libshim_icu \
+	libshim_hwpged \
 	libshim_wvm
 
 # USB OTG support
