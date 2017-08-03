@@ -124,11 +124,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.sys.isUsbOtgEnabled=true
 
-ifeq ($(HISI_RIL),true)
-PRODUCT_PROPERTY_OVERRIDES += ro.telephony.ril_class=HwHisiRIL
-else
 PRODUCT_PROPERTY_OVERRIDES += ro.telephony.ril_class=HuaweiRIL
-endif
 
 # TWRP
 PRODUCT_COPY_FILES += $(LOCAL_PATH)/rootdir/twrp.fstab:recovery/root/etc/twrp.fstab

@@ -42,7 +42,6 @@ ENABLE_CPUSETS := true
 # Assert
 TARGET_OTA_ASSERT_DEVICE := hi6210sft,cherryplus,Che2-L11,hwChe2,cherry
 
-# Don't generate block mode update zips
 #BLOCK_BASED_OTA := false
 
 # Audio
@@ -97,10 +96,6 @@ TARGET_REQUIRES_SYNCHRONOUS_SETSURFACE := true
 USE_DEVICE_SPECIFIC_GPS := true
 TARGET_NO_RPC := true
 
-# For TEST
-# Non PIE Support to run GPS
-TARGET_NEEDS_NON_PIE_SUPPORT := true
-
 # Kernel
 BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_KERNEL_BASE := 0x07478000
@@ -132,27 +127,13 @@ TARGET_SYSTEM_PROP := $(LOCAL_PATH)/system.prop
 
 # Recovery
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/fstab.hi6210sft
-TARGET_RECOVERY_DEVICE_MODULES := libinit_hi6210sft
-BOARD_USES_FULL_RECOVERY_IMAGE := true
 
 # RIL
-#HISI_RIL := true
-ifeq ($(HISI_RIL),true)
-TARGET_GLOBAL_CFLAGS += -DDISABLE_ASHMEM_TRACKING
-PROTOBUF_SUPPORTED := true
-BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/hisi_ril
-else
 BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/huawei_ril
-endif
 SIM_COUNT := 2
 
 # Enable WEBGL
 ENABLE_WEBGL := true
-
-# Vendor Init
-TARGET_UNIFIED_DEVICE := true
-TARGET_INIT_VENDOR_LIB := libinit_hi6210sft
-TARGET_LIBINIT_DEFINES_FILE := $(LOCAL_PATH)/init/init_cherryplus.cpp
 
 # Wifi
 WPA_SUPPLICANT_VERSION := VER_0_8_X

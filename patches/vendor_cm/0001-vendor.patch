@@ -8,10 +8,8 @@ Signed-off-by: ksrt12 <kazakov12stepan2012@live.ru>
  config/common.mk              | 20 +++-----------------
  config/data_only.mk           |  1 -
  config/telephony.mk           |  3 +--
- prebuilt/Wallpaper/Android.mk | 10 ++++++++++
  tools/rr_variant.sh           |  2 ++
- 5 files changed, 16 insertions(+), 20 deletions(-)
- create mode 100644 prebuilt/Wallpaper/Android.mk
+ 5 files changed, 6 insertions(+), 20 deletions(-)
 
 diff --git a/config/common.mk b/config/common.mk
 index 73ee74ea..5d3b0433 100644
@@ -97,22 +95,6 @@ index 7773067c..f93fc5d0 100644
  PRODUCT_PROPERTY_OVERRIDES += \
 -    ro.config.ringtone=Resurrection.mp3
 +    ro.config.ringtone=Huawei_Tune_Piano.ogg
-diff --git a/prebuilt/Wallpaper/Android.mk b/prebuilt/Wallpaper/Android.mk
-new file mode 100644
-index 00000000..11da127b
---- /dev/null
-+++ b/prebuilt/Wallpaper/Android.mk
-@@ -0,0 +1,10 @@
-+LOCAL_PATH := $(call my-dir)
-+
-+include $(CLEAR_VARS)
-+LOCAL_MODULE_TAGS := optional
-+LOCAL_MODULE := GoogleWallpaper
-+LOCAL_SRC_FILES := Wallpaper.apk
-+LOCAL_MODULE_CLASS := APPS
-+LOCAL_MODULE_SUFFIX := $(COMMON_ANDROID_PACKAGE_SUFFIX)
-+LOCAL_CERTIFICATE := PRESIGNED
-+include $(BUILD_PREBUILT)
 diff --git a/tools/rr_variant.sh b/tools/rr_variant.sh
 index 9dc4984b..adc18c31 100755
 --- a/tools/rr_variant.sh
