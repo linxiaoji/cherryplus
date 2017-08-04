@@ -105,7 +105,7 @@ BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x07b88000 -
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 TARGET_KERNEL_HEADER_ARCH := arm64
-TARGET_KERNEL_SOURCE := kernel/huawei/shine
+TARGET_KERNEL_SOURCE := kernel/huawei/cherryplus
 TARGET_KERNEL_CONFIG := cherryplus_defconfig
 
 # Lights
@@ -127,6 +127,7 @@ TARGET_SYSTEM_PROP := $(LOCAL_PATH)/system.prop
 
 # Recovery
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/fstab.hi6210sft
+BOARD_USES_FULL_RECOVERY_IMAGE := true
 
 # RIL
 BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/huawei_ril
@@ -151,18 +152,24 @@ WIFI_DRIVER_MODULE_ARG    := "firmware_path=/vendor/firmware/fw_bcm4343s_hw.bin 
 
 # TWRP
 RECOVERY_VARIANT := twrp
-TW_THEME := portrait_hdpi
 RECOVERY_SDCARD_ON_DATA := true
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
+TWRP_INCLUDE_LOGCAT := true
+TARGET_USES_LOGD := true
 TWHAVE_SELINUX := true
 TW_BRIGHTNESS_PATH := "/sys/devices/platform/balong_fb.1/leds/lcd_backlight0/brightness"
 TW_CUSTOM_BATTERY_PATH := "/sys/devices/battery.0/power_supply/Battery"
 TW_MAX_BRIGHTNESS := 255
-BOARD_HAS_NO_SELECT_BUTTON := true
-TW_SCREEN_BLANK_ON_BOOT := true
+#BOARD_HAS_NO_SELECT_BUTTON := true
+#TW_SCREEN_BLANK_ON_BOOT := true
 TW_EXCLUDE_SUPERSU := true
+TW_INCLUDE_CRYPTO := true
+TW_INCLUDE_NTFS_3G := true
 TW_FBIOPAN := true
 TW_DEFAULT_LANGUAGE := ru
+TW_THEME := portrait_hdpi
+TW_DEVICE_VERSION := $(shell whoami)
+TW_CRYPTO_USE_SYSTEM_VOLD := true
 
 # Paths
 TW_EXTERNAL_STORAGE_PATH := "/external_sd"

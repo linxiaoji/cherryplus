@@ -27,17 +27,9 @@
 /dev/tc_ns_client		u:object_r:teecd_device:s0
 /dev/block/mmcblk0rpmb	u:object_r:teecd_blkdev:s0
 
-# ---- this need to be analyze again, not go into effect.----
 /dev/block/platform/hi_mci.0/by-name/oeminfo	u:object_r:oeminfo_nvm_device:s0
 
 # modem device partiton
-
-# rild-balong-test
-# rild-debug1
-# rild-ims
-# rild2
-# rild3
-# ---- is there any more ? -----
 /dev/socket/rild3			u:object_r:rild_socket:s0
 /dev/socket/rild2			u:object_r:rild_socket:s0
 /dev/socket/rild.*			u:object_r:rild_socket:s0
@@ -51,7 +43,6 @@
 
 #tee-multiuser
 /dev/socket/tee-multi-user	u:object_r:tee_multi_user_socket:s0
-
 
 #act for vt
 /dev/act                u:object_r:act_device:s0
@@ -83,7 +74,6 @@
 
 /dev/socket/hwnff			u:object_r:hwnff_socket:s0
 /dev/socket/MsgHubSock		u:object_r:msghub_socket:s0
-
 
 # recovery
 /dev/nve0		u:object_r:recovery_device:s0
@@ -255,8 +245,6 @@
 /mnvm2:0(/.*)?      u:object_r:modem_nv_file:s0
 /modemnv(/.*)?		u:object_r:modem_nv_file:s0
 
-#DTS2015042810167 j00172194 add end 
-
 /dev/block/mmcblk0p4 u:object_r:frp_block_device:s0
 
 #fsck
@@ -314,18 +302,14 @@
 /dev/hisi-ivp             u:object_r:ivp_device:s0
 /dev/ivp-ipc             u:object_r:ivp_device:s0
 
-#line 1 "device/hisi/common/sepolicy/hi6210sft/file_contexts"
 # for hi6210sft
-
 /system/bin/glgps			u:object_r:gpsd_exec:s0
-
 /dev/ttyAMA1            u:object_r:hci_attach_dev:s0
 
 # video decoder
 /dev/cnm_vpu		u:object_r:video_device:s0
 /data/k3_camera(/.*)?   u:object_r:k3_camera_file:s0
 
-# BEGIN PN:DTS2015112003205 ,added by swx314068 ,20151125
 /sys/devices/amba.12/f7101000.i2c/i2c-1/1-001c/command    u:object_r:sysfs_huawei_sensor:s0
 /sys/devices/amba.13/f7101000.i2c/i2c-1/1-001c/command    u:object_r:sysfs_huawei_sensor:s0
 /sys/devices/f8000000.hisi_led/leds/blue/brightness    u:object_r:sysfs_huawei_sensor:s0
@@ -333,7 +317,5 @@
 /sys/devices/f8000000.hisi_led/leds/green/brightness    u:object_r:sysfs_huawei_sensor:s0
 /sys/devices/platform/balong_fb.1/leds/lcd_backlight0/brightness    u:object_r:sysfs_huawei_sensor:s0
 /sys/devices/virtual/leds/torch/brightness    u:object_r:sysfs_huawei_sensor:s0
-# END PN:DTS2015112003205 ,added by swx314068 ,20151125
 
-#HwProjectMenu
 /sys/devices/amba.*/enable_charger  u:object_r:sysfs_charger:s0
