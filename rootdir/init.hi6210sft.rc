@@ -771,7 +771,7 @@ on property:ro.config.enable_rcc=true
     write /sys/block/zram0/reset 1
     write /sys/block/zram0/comp_algorithm lz4
     write /sys/block/zram0/disksize 1024MB
-    swapon_all fstab.zram1024m
+#    swapon_all fstab.zram1024m
 
 on charger
     mount_all /fstab.hi6210sft
@@ -834,7 +834,7 @@ service gpsdaemon /system/bin/gpsdaemon
     class main
     oneshot
 
-service gpsd /system/bin/glgps -c /system/etc/gpsconfig.xml
+service gpsd /system/bin/glgps -c /data/gps/gpsconfig.xml
     socket gps seqpacket 660 root root
     class main
     user root

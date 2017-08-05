@@ -167,6 +167,7 @@ TW_FBIOPAN := true
 TW_DEFAULT_LANGUAGE := ru
 TW_THEME := portrait_hdpi
 TW_DEVICE_VERSION := $(shell whoami)
+BUILD_WITH_FULL_STAGEFRIGHT := true
 
 # Paths
 TW_EXTERNAL_STORAGE_PATH := "/external_sd"

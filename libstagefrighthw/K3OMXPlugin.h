@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-#ifndef QCOM_OMX_PLUGIN_H_
+#ifndef K3_OMX_PLUGIN_H_
 
-#define QCOM_OMX_PLUGIN_H_
+#define K3_OMX_PLUGIN_H_
 
 #include <media/hardware/OMXPluginBase.h>
 
@@ -73,4 +73,4 @@ private:
 
 }  // namespace android
 
-#endif  // QCOM_OMX_PLUGIN_H_
+#endif  // K3_OMX_PLUGIN_H_
