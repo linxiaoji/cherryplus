@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-ifneq ($(BUILD_WITH_FULL_STAGEFRIGHT),true)
+ifneq ($(BUILD_FULL_STAGEFRIGHT_K3),true)
 LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
