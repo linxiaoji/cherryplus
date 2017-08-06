@@ -154,22 +154,18 @@ WIFI_DRIVER_MODULE_ARG    := "firmware_path=/vendor/firmware/fw_bcm4343s_hw.bin 
 RECOVERY_VARIANT := twrp
 RECOVERY_SDCARD_ON_DATA := true
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
-TWRP_INCLUDE_LOGCAT := true
-TARGET_USES_LOGD := true
 TWHAVE_SELINUX := true
 TW_BRIGHTNESS_PATH := "/sys/devices/platform/balong_fb.1/leds/lcd_backlight0/brightness"
 TW_CUSTOM_BATTERY_PATH := "/sys/devices/battery.0/power_supply/Battery"
 TW_MAX_BRIGHTNESS := 255
-#BOARD_HAS_NO_SELECT_BUTTON := true
-#TW_SCREEN_BLANK_ON_BOOT := true
+TW_SCREEN_BLANK_ON_BOOT := true
 TW_EXCLUDE_SUPERSU := true
-TW_INCLUDE_CRYPTO := true
 TW_INCLUDE_NTFS_3G := true
 TW_FBIOPAN := true
 TW_DEFAULT_LANGUAGE := ru
 TW_THEME := portrait_hdpi
 TW_DEVICE_VERSION := $(shell whoami)
-TW_CRYPTO_USE_SYSTEM_VOLD := true
+BOARD_HAS_NO_SELECT_BUTTON := true
 
 # Paths
 TW_EXTERNAL_STORAGE_PATH := "/external_sd"
@@ -184,3 +180,6 @@ BOARD_UMS_LUNFILE := "/sys/class/android_usb/android0/f_mass_storage/lun/file"
 WITH_DEXPREOPT := true
 #DONT_DEXPREOPT_PREBUILTS := true
 SHOW_COMMANDS := true
+
+# K3 OMX
+BUILD_FULL_STAGEFRIGHT_K3 := true

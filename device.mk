@@ -115,7 +115,7 @@ PRODUCT_PACKAGES += \
     wpa_supplicant \
     wpa_supplicant.conf
 
-PRODUCT_PACKAGES += htop
+PRODUCT_PACKAGES += libstagefrighthw
 PRODUCT_PACKAGES += \
 	libshim_icu \
 	libshim_wvm

@@ -1,18 +1,18 @@
-From 95f0436056b68fec7a5515fb64f14c1948ac3281 Mon Sep 17 00:00:00 2001
+From 83fd4c4ff8b439e073d40b07cceff5b44f00bcb2 Mon Sep 17 00:00:00 2001
 From: ksrt12 <kazakov12stepan2012@live.ru>
-Date: Fri, 14 Jul 2017 00:16:15 +0700
-Subject: [PATCH 1/2] vendor
+Date: Sun, 6 Aug 2017 16:18:34 +0300
+Subject: [PATCH] vendor
 
-Signed-off-by: ksrt12 <kazakov12stepan2012@live.ru>
 ---
- config/common.mk              | 20 +++-----------------
- config/data_only.mk           |  1 -
- config/telephony.mk           |  3 +--
- tools/rr_variant.sh           |  2 ++
- 5 files changed, 6 insertions(+), 20 deletions(-)
+ config/common.mk    | 20 +++-----------------
+ config/data_only.mk |  3 +--
+ config/telephony.mk |  3 +--
+ tools/changelog.sh  |  3 ++-
+ tools/rr_variant.sh |  2 ++
+ 5 files changed, 9 insertions(+), 22 deletions(-)
 
 diff --git a/config/common.mk b/config/common.mk
-index 73ee74ea..5d3b0433 100644
+index 59d97850..d97d4b25 100644
 --- a/config/common.mk
 +++ b/config/common.mk
 @@ -59,7 +59,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
@@ -62,7 +62,7 @@ index 73ee74ea..5d3b0433 100644
      OmniStyle \
 @@ -312,7 +298,7 @@ DEVICE_PACKAGE_OVERLAYS += vendor/cm/overlay/common
  
- PRODUCT_VERSION = 5.8.3
+ PRODUCT_VERSION = 5.8.4
  ifneq ($(RR_BUILDTYPE),)
 -RR_VERSION := RR-N-v$(PRODUCT_VERSION)-$(shell date -u +%Y%m%d)-$(CM_BUILD)-$(RR_BUILDTYPE)
 +RR_VERSION := RR-N-v$(PRODUCT_VERSION)-$(shell date -u +%Y%m%d)-$(CM_BUILD)-$(RR_BUILDTYPE)-b$(shell cat logs/.version)
@@ -70,7 +70,7 @@ index 73ee74ea..5d3b0433 100644
  RR_VERSION := RR-N-v$(PRODUCT_VERSION)-$(shell date -u +%Y%m%d)-$(CM_BUILD)
  endif
 diff --git a/config/data_only.mk b/config/data_only.mk
-index 55f48c03..746787ec 100644
+index 55f48c03..6432bb34 100644
 --- a/config/data_only.mk
 +++ b/config/data_only.mk
 @@ -4,5 +4,4 @@ PRODUCT_COPY_FILES += \
@@ -78,8 +78,9 @@ index 55f48c03..746787ec 100644
  # Telephony packages
  PRODUCT_PACKAGES += \
 -    Stk \
-     CellBroadcastReceiver
+-    CellBroadcastReceiver
 \ No newline at end of file
++    CellBroadcastReceiver
 diff --git a/config/telephony.mk b/config/telephony.mk
 index 7773067c..f93fc5d0 100644
 --- a/config/telephony.mk
@@ -95,8 +96,27 @@ index 7773067c..f93fc5d0 100644
  PRODUCT_PROPERTY_OVERRIDES += \
 -    ro.config.ringtone=Resurrection.mp3
 +    ro.config.ringtone=Huawei_Tune_Piano.ogg
+diff --git a/tools/changelog.sh b/tools/changelog.sh
+index a70e9825..c3589f37 100755
+--- a/tools/changelog.sh
++++ b/tools/changelog.sh
+@@ -31,6 +31,7 @@ changelog_path_name=CHANGELOG.mkdn #changelog file path/name.extension
+ source_name="Resurrection Remix Nougat" #Name to display in changelog.md top before version
+ # input variables end
+ 
++if [ "$dtl" != "0" ];then
+ export Changelog=$source_tree/$changelog_path_name
+ export Temp_Changelog=$source_tree/$changelog_path_name.temp
+ 
+@@ -87,5 +88,5 @@ then
+ 	echo "$(cat $Temp_Changelog)\n$(cat $Changelog)" > $Changelog
+ 	rm -f $Temp_Changelog
+ fi
+-
++fi
+ echo -e ${ylw}"\n √ Changelog successfully generated.\n"${txtrst}
 diff --git a/tools/rr_variant.sh b/tools/rr_variant.sh
-index 9dc4984b..adc18c31 100755
+index 1461b29b..285d8c76 100755
 --- a/tools/rr_variant.sh
 +++ b/tools/rr_variant.sh
 @@ -22,6 +22,7 @@
