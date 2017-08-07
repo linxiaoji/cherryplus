@@ -1,0 +1,48 @@
+From 921f6ab0fb241744a4408965c8061b2cfd9c3e83 Mon Sep 17 00:00:00 2001
+From: ksrt12 <kazakov12stepan2012@live.ru>
+Date: Sun, 6 Aug 2017 22:24:18 +0300
+Subject: [PATCH] omx k3
+
+---
+ media/libstagefright/omx/Android.mk        | 4 ++++
+ media/libstagefright/omx/SoftOMXPlugin.cpp | 9 +++++++++
+ 2 files changed, 13 insertions(+)
+
+diff --git a/media/libstagefright/omx/Android.mk b/media/libstagefright/omx/Android.mk
+index 1b0e99691..a07e6b33d 100644
+--- a/media/libstagefright/omx/Android.mk
++++ b/media/libstagefright/omx/Android.mk
+@@ -56,6 +56,10 @@ LOCAL_CFLAGS += -DCAMCORDER_GRALLOC_SOURCE
+ endif
+ endif
+ 
++ifeq ($(OMX_K3),true)
++LOCAL_CFLAGS +=-DOMX_K3
++endif
++
+ LOCAL_MODULE:= libstagefright_omx
+ LOCAL_CFLAGS += -Werror -Wall
+ # DOLBY_START
+diff --git a/media/libstagefright/omx/SoftOMXPlugin.cpp b/media/libstagefright/omx/SoftOMXPlugin.cpp
+index adb737002..4ed47b2f1 100644
+--- a/media/libstagefright/omx/SoftOMXPlugin.cpp
++++ b/media/libstagefright/omx/SoftOMXPlugin.cpp
+@@ -78,6 +78,15 @@ static const struct {
+     { "OMX.google.raw.decoder", "rawdec", "audio_decoder.raw" },
+     { "OMX.google.flac.encoder", "flacenc", "audio_encoder.flac" },
+     { "OMX.google.gsm.decoder", "gsmdec", "audio_decoder.gsm" },
++#ifdef OMX_K3
++    { "OMX.k3.video.decoder.avc", "avcdec", "video_decoder.avc" },
++    { "OMX.k3.video.encoder.avc", "avcenc", "video_encoder.avc" },
++    { "OMX.k3.video.decoder.mpeg2", "mpeg2dec", "video_decoder.mpeg2" },
++    { "OMX.k3.video.decoder.mpeg4", "mpeg4dec", "video_decoder.mpeg4" },
++    { "OMX.k3.video.decoder.vc1", "vcxdec", "video_decoder.vc1" },
++    { "OMX.k3.video.decoder.vp8", "vpxdec", "video_decoder.vp8" },
++    { "OMX.k3.video.decoder.rv", "rvdec", "video_decoder.rv" },
++#endif
+ #ifdef QTI_FLAC_DECODER
+     { "OMX.qti.audio.decoder.flac", "flacdec", "audio_decoder.flac" },
+ #endif
+-- 
+2.13.0
+

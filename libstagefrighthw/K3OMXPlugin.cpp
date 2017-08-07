@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2009 The Android Open Source Project
+ * Copyright (c) 2014, The Linux Foundation. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +19,7 @@
 
 #include <dlfcn.h>
 
-#include <media/hardware/HardwareAPI.h>
+#include <HardwareAPI.h>
 
 namespace android {
 
@@ -26,8 +27,10 @@ OMXPluginBase *createOMXPlugin() {
     return new K3OMXPlugin;
 }
 
+#define LIBOMX "lib_k3_omxcore.so"
+
 K3OMXPlugin::K3OMXPlugin()
-    : mLibHandle(dlopen("lib_k3_omxcore.so", RTLD_NOW)),
+    : mLibHandle(dlopen(LIBOMX, RTLD_NOW)),
       mInit(NULL),
       mDeinit(NULL),
       mComponentNameEnum(NULL),
@@ -49,6 +52,8 @@ K3OMXPlugin::K3OMXPlugin()
                     mLibHandle, "OMX_GetRolesOfComponent");
 
         (*mInit)();
+    } else {
+        ALOGE("%s: failed to load %s", __func__, LIBOMX);
     }
 }
 
@@ -90,6 +95,7 @@ OMX_ERRORTYPE K3OMXPlugin::enumerateComponents(
         size_t size,
         OMX_U32 index) {
     if (mLibHandle == NULL) {
+        ALOGE("mLibHandle is NULL!");
         return OMX_ErrorUndefined;
     }
 
@@ -119,21 +125,14 @@ OMX_ERRORTYPE K3OMXPlugin::getRolesOfComponent(
             array[i] = new OMX_U8[OMX_MAX_STRINGNAME_SIZE];
         }
 
-        OMX_U32 numRoles2;
         err = (*mGetRolesOfComponentHandle)(
-                const_cast<OMX_STRING>(name), &numRoles2, array);
-
-	if (err != OMX_ErrorNone) {
-	  return err;
-	}
-
-	if (numRoles2 != numRoles) {
-	  return err;
-	}
+                const_cast<OMX_STRING>(name), &numRoles, array);
 
         for (OMX_U32 i = 0; i < numRoles; ++i) {
-            String8 s((const char *)array[i]);
-            roles->push(s);
+            if (err == OMX_ErrorNone) {
+                String8 s((const char *)array[i]);
+                roles->push(s);
+            }
 
             delete[] array[i];
             array[i] = NULL;
@@ -143,7 +142,7 @@ OMX_ERRORTYPE K3OMXPlugin::getRolesOfComponent(
         array = NULL;
     }
 
-    return OMX_ErrorNone;
+    return err;
 }
 
 }  // namespace android

@@ -115,7 +115,10 @@ PRODUCT_PACKAGES += \
     wpa_supplicant \
     wpa_supplicant.conf
 
+ifeq ($(BUILD_FULL_STAGEFRIGHT_K3),true)
 PRODUCT_PACKAGES += libstagefrighthw
+endif
+
 PRODUCT_PACKAGES += \
 	libshim_icu \
 	libshim_wvm

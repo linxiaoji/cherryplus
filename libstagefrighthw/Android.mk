@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2009 The Android Open Source Project
+# Copyright (C) 2016 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,27 +13,28 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-ifneq ($(BUILD_FULL_STAGEFRIGHT_K3),true)
+
 LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
 LOCAL_SRC_FILES := \
-    K3OMXPlugin.cpp                      \
+    NVOMXPlugin.cpp
 
-#LOCAL_CFLAGS := 
-
-LOCAL_C_INCLUDES:= \
+LOCAL_C_INCLUDES := \
         frameworks/native/include/media/openmax \
         frameworks/native/include/media/hardware
 
-LOCAL_SHARED_LIBRARIES :=       \
-        libbinder               \
-        libutils                \
-        libcutils               \
-        libdl                   \
-        libui                   \
+LOCAL_CFLAGS := -Wall -Werror -DLOG_TAG=\"libstagefrighthw\"
+
+LOCAL_SHARED_LIBRARIES := \
+        libbinder \
+        libutils \
+        libcutils \
+        libdl \
+        liblog \
+        libui \
 
 LOCAL_MODULE := libstagefrighthw
 
 include $(BUILD_SHARED_LIBRARY)
-endif
+
