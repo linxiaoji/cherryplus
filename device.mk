@@ -122,7 +122,8 @@ endif
 
 PRODUCT_PACKAGES += \
 	libshim_icu \
-	libshim_wvm
+	libshim_wvm \
+	Recorder
 
 # USB OTG support
 PRODUCT_PROPERTY_OVERRIDES += \

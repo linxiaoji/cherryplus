@@ -1,37 +1,38 @@
-From 7163df12b7c0754a87603852fa95e5ce27787442 Mon Sep 17 00:00:00 2001
-From: Meticulus <theonejohnnyd@gmail.com>
-Date: Mon, 6 Feb 2017 08:25:29 -0600
-Subject: [PATCH] 0001-telephony-fix-2g-2g-4g-switch
+From 9e92d72291454448122004a7c5472130a4fe281b Mon Sep 17 00:00:00 2001
+From: ksrt12 <kazakov12stepan2012@live.ru>
+Date: Mon, 7 Aug 2017 15:22:47 +0300
+Subject: [PATCH] fix 2g/3g/LTE switch
 
-Change-Id: I356c7a8f27c02f1fa395a2c2db1f1a7f56be8f5c
+Change-Id: I365bb549e769a75af1f06a8ef85ac98ff6c10ee6
 ---
  src/java/com/android/internal/telephony/Phone.java | 6 +++---
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/src/java/com/android/internal/telephony/Phone.java b/src/java/com/android/internal/telephony/Phone.java
-index e6168cd..dd94898 100644
+index 7f0b1b80..4291529d 100644
 --- a/src/java/com/android/internal/telephony/Phone.java
 +++ b/src/java/com/android/internal/telephony/Phone.java
-@@ -1851,7 +1851,7 @@ public abstract class Phone extends Handler implements PhoneInternalInterface {
-         // Only set preferred network types to that which the modem supports
+@@ -1854,7 +1854,7 @@ public abstract class Phone extends Handler implements PhoneInternalInterface {
          int modemRaf = getRadioAccessFamily();
          int rafFromType = RadioAccessFamily.getRafFromNetworkType(networkType);
--
-+/*
-         if (modemRaf == RadioAccessFamily.RAF_UNKNOWN
+ 
+-        if (modemRaf == RadioAccessFamily.RAF_UNKNOWN
++/*        if (modemRaf == RadioAccessFamily.RAF_UNKNOWN
                  || rafFromType == RadioAccessFamily.RAF_UNKNOWN) {
              Rlog.d(LOG_TAG, "setPreferredNetworkType: Abort, unknown RAF: "
-@@ -1865,8 +1865,8 @@ public abstract class Phone extends Handler implements PhoneInternalInterface {
+                     + modemRaf + " " + rafFromType);
+@@ -1866,9 +1866,9 @@ public abstract class Phone extends Handler implements PhoneInternalInterface {
+                 response.sendToTarget();
              }
              return;
-         }
--
+-        }
++        }*/
+ 
 -        int filteredRaf = (rafFromType & modemRaf);
-+*/
 +        int filteredRaf = (rafFromType);
          int filteredType = RadioAccessFamily.getNetworkTypeFromRaf(filteredRaf);
  
          Rlog.d(LOG_TAG, "setPreferredNetworkType: networkType = " + networkType
 -- 
-1.9.1
+2.13.0
 
