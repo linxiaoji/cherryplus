@@ -117,6 +117,7 @@ PRODUCT_PACKAGES += \
 
 ifeq ($(BUILD_FULL_STAGEFRIGHT_K3),true)
 PRODUCT_PACKAGES += libstagefrighthw
+$(call inherit-product-if-exists, vendor/huawei/k3_omx/k3-omx.mk)
 endif
 
 PRODUCT_PACKAGES += \
@@ -139,8 +140,6 @@ PRODUCT_COPY_FILES += \
 #	dalvik.vm.dex2oat-filter=balanced \
 #	dalvik.vm.dex2oat-flags=--no-watch-dog \
 #	dalvik.vm.image-dex2oat-filter=speed
-#PRODUCT_PROPERTY_OVERRIDES += \
-#	persist.sys.root_access=1
 
 -include hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
