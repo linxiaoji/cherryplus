@@ -1,6 +1,6 @@
 Copyright 2017 - ksrt12
 
-# Device configuration for Huawei Honor 4X.
+Device configuration for Huawei Honor 4X.
 =====================================
 
 Basic   | Spec Sheet
