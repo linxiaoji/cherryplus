@@ -14,10 +14,8 @@
 # limitations under the License.
 #
 
-$(call inherit-product-if-exists, vendor/huawei/cherryplus/cherryplus-vendor.mk)
+$(call inherit-product, vendor/huawei/cherryplus/cherryplus-vendor.mk)
 $(call inherit-product-if-exists, device/huawei/apps/myapps.mk)
-$(call inherit-product-if-exists, device/huawei/libstagefright_soft.mk)
-$(call inherit-product-if-exists, device/huawei/apps/microg.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
@@ -30,33 +28,32 @@ PRODUCT_COPY_FILES += \
 # Permissions
 NATIVE_PATH := frameworks/native/data/etc
 PERM_PATH := system/etc/permissions
+AHARD := android.hardware
 PRODUCT_COPY_FILES += \
-    $(NATIVE_PATH)/android.hardware.bluetooth.xml:$(PERM_PATH)/android.hardware.bluetooth.xml \
-    $(NATIVE_PATH)/android.hardware.bluetooth_le.xml:$(PERM_PATH)/android.hardware.bluetooth_le.xml \
-    $(NATIVE_PATH)/android.hardware.camera.external.xml:$(PERM_PATH)/android.hardware.camera.external.xml \
-    $(NATIVE_PATH)/android.hardware.camera.flash-autofocus.xml:$(PERM_PATH)/android.hardware.camera.flash-autofocus.xml \
-    $(NATIVE_PATH)/android.hardware.camera.front.xml:$(PERM_PATH)/android.hardware.camera.front.xml \
-    $(NATIVE_PATH)/android.hardware.camera.xml:$(PERM_PATH)/android.hardware.camera.xml \
-    $(NATIVE_PATH)/android.hardware.location.gps.xml:$(PERM_PATH)/android.hardware.location.gps.xml \
-    $(NATIVE_PATH)/android.hardware.location.xml:$(PERM_PATH)/android.hardware.location.xml \
-    $(NATIVE_PATH)/android.hardware.opengles.aep.xml:$(PERM_PATH)/android.hardware.opengles.aep.xml \
-    $(NATIVE_PATH)/android.hardware.sensor.accelerometer.xml:$(PERM_PATH)/android.hardware.sensor.accelerometer.xml \
-    $(NATIVE_PATH)/android.hardware.sensor.compass.xml:$(PERM_PATH)/android.hardware.sensor.compass.xml \
-    $(NATIVE_PATH)/android.hardware.sensor.gyroscope.xml:$(PERM_PATH)/android.hardware.sensor.gyroscope.xml \
-    $(NATIVE_PATH)/android.hardware.sensor.light.xml:$(PERM_PATH)/android.hardware.sensor.light.xml \
-    $(NATIVE_PATH)/android.hardware.sensor.proximity.xml:$(PERM_PATH)/android.hardware.sensor.proximity.xml \
-    $(NATIVE_PATH)/android.hardware.sensor.stepcounter.xml:$(PERM_PATH)/android.hardware.sensor.stepcounter.xml \
-    $(NATIVE_PATH)/android.hardware.telephony.gsm.xml:$(PERM_PATH)/android.hardware.telephony.gsm.xml \
-    $(NATIVE_PATH)/android.hardware.telephony.cdma.xml:$(PERM_PATH)/android.hardware.telephony.cdma.xml \
-    $(NATIVE_PATH)/android.hardware.touchscreen.multitouch.jazzhand.xml:$(PERM_PATH)/android.hardware.touchscreen.multitouch.jazzhand.xml \
-    $(NATIVE_PATH)/android.hardware.usb.accessory.xml:$(PERM_PATH)/android.hardware.usb.accessory.xml \
-    $(NATIVE_PATH)/android.hardware.usb.host.xml:$(PERM_PATH)/android.hardware.usb.host.xml \
-    $(NATIVE_PATH)/android.hardware.wifi.xml:$(PERM_PATH)/android.hardware.wifi.xml \
+    $(NATIVE_PATH)/$(AHARD).bluetooth.xml:$(PERM_PATH)/$(AHARD).bluetooth.xml \
+    $(NATIVE_PATH)/$(AHARD).bluetooth_le.xml:$(PERM_PATH)/$(AHARD).bluetooth_le.xml \
+    $(NATIVE_PATH)/$(AHARD).camera.external.xml:$(PERM_PATH)/$(AHARD).camera.external.xml \
+    $(NATIVE_PATH)/$(AHARD).camera.flash-autofocus.xml:$(PERM_PATH)/$(AHARD).camera.flash-autofocus.xml \
+    $(NATIVE_PATH)/$(AHARD).camera.front.xml:$(PERM_PATH)/$(AHARD).camera.front.xml \
+    $(NATIVE_PATH)/$(AHARD).camera.xml:$(PERM_PATH)/$(AHARD).camera.xml \
+    $(NATIVE_PATH)/$(AHARD).location.gps.xml:$(PERM_PATH)/$(AHARD).location.gps.xml \
+    $(NATIVE_PATH)/$(AHARD).location.xml:$(PERM_PATH)/$(AHARD).location.xml \
+    $(NATIVE_PATH)/$(AHARD).opengles.aep.xml:$(PERM_PATH)/$(AHARD).opengles.aep.xml \
+    $(NATIVE_PATH)/$(AHARD).sensor.accelerometer.xml:$(PERM_PATH)/$(AHARD).sensor.accelerometer.xml \
+    $(NATIVE_PATH)/$(AHARD).sensor.compass.xml:$(PERM_PATH)/$(AHARD).sensor.compass.xml \
+    $(NATIVE_PATH)/$(AHARD).sensor.gyroscope.xml:$(PERM_PATH)/$(AHARD).sensor.gyroscope.xml \
+    $(NATIVE_PATH)/$(AHARD).sensor.light.xml:$(PERM_PATH)/$(AHARD).sensor.light.xml \
+    $(NATIVE_PATH)/$(AHARD).sensor.proximity.xml:$(PERM_PATH)/$(AHARD).sensor.proximity.xml \
+    $(NATIVE_PATH)/$(AHARD).sensor.stepcounter.xml:$(PERM_PATH)/$(AHARD).sensor.stepcounter.xml \
+    $(NATIVE_PATH)/$(AHARD).telephony.gsm.xml:$(PERM_PATH)/$(AHARD).telephony.gsm.xml \
+    $(NATIVE_PATH)/$(AHARD).telephony.cdma.xml:$(PERM_PATH)/$(AHARD).telephony.cdma.xml \
+    $(NATIVE_PATH)/$(AHARD).touchscreen.multitouch.jazzhand.xml:$(PERM_PATH)/$(AHARD).touchscreen.multitouch.jazzhand.xml \
+    $(NATIVE_PATH)/$(AHARD).usb.accessory.xml:$(PERM_PATH)/$(AHARD).usb.accessory.xml \
+    $(NATIVE_PATH)/$(AHARD).usb.host.xml:$(PERM_PATH)/$(AHARD).usb.host.xml \
+    $(NATIVE_PATH)/$(AHARD).wifi.xml:$(PERM_PATH)/$(AHARD).wifi.xml \
     $(NATIVE_PATH)/android.software.app_widgets.xml:$(PERM_PATH)/android.software.app_widgets.xml \
     $(NATIVE_PATH)/android.software.midi.xml:$(PERM_PATH)/android.software.midi.xml \
-    $(NATIVE_PATH)/android.software.sip.voip.xml:$(PERM_PATH)/android.software.sip.voip.xml \
     $(NATIVE_PATH)/handheld_core_hardware.xml:$(PERM_PATH)/handheld_core_hardware.xml
-#    $(LOCAL_PATH)/etc/com.huawei.audioalgo.xml:$(PERM_PATH)/com.huawei.audioalgo.xml
 
 # Screen density
 PRODUCT_AAPT_CONFIG := normal
@@ -73,6 +70,7 @@ PRODUCT_PACKAGES += \
     libaudioutils \
     libaudioroute \
     libtinyalsa \
+    libtinyxml \
     tinyplay \
     tinycap \
     tinymix \
@@ -106,22 +104,18 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
 
-# Ambient
 PRODUCT_PACKAGES += \
-    ambientsdk \
-    hwcomposer.hi6210sft
+    ambientsdk
 
-# GPS
-PRODUCT_PACKAGES += \
-    libtinyxml
-
-# Wi-fi
+# Wifi
 PRODUCT_PACKAGES += \
     libwpa_client \
     dhcpcd.conf \
     hostapd \
     wpa_supplicant \
     wpa_supplicant.conf
+
+PRODUCT_PACKAGES += YahooWeatherProvider
 
 -include hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)

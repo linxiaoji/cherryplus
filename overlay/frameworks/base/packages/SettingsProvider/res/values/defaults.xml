@@ -18,4 +18,5 @@
 -->
 <resources>
     <bool name="def_screen_brightness_automatic_mode">false</bool>
+    <bool name="def_notifications_use_ring_volume">false</bool>
 </resources>

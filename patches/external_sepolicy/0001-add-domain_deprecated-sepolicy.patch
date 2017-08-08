@@ -1,0 +1,132 @@
+From 856ee89f817d9be4a79658d4e33e62255e38270e Mon Sep 17 00:00:00 2001
+From: ksrt12 <kazakov12stepan2012@live.ru>
+Date: Tue, 8 Aug 2017 03:03:11 +0300
+Subject: [PATCH] add domain_deprecated sepolicy
+
+Change-Id: Ibcf533ea472c71ed0dc2176034cf563dd274cac9
+---
+ attributes           |  2 ++
+ domain_deprecated.te | 74 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+ file.te              |  2 ++
+ genfs_contexts       |  1 +
+ 4 files changed, 79 insertions(+)
+ create mode 100644 domain_deprecated.te
+
+diff --git a/attributes b/attributes
+index e42edd6..f9df571 100644
+--- a/attributes
++++ b/attributes
+@@ -8,6 +8,8 @@ attribute dev_type;
+ # All types used for processes.
+ attribute domain;
+ 
++attribute domain_deprecated;
++
+ # All types used for filesystems.
+ attribute fs_type;
+ 
+diff --git a/domain_deprecated.te b/domain_deprecated.te
+new file mode 100644
+index 0000000..00fb516
+--- /dev/null
++++ b/domain_deprecated.te
+@@ -0,0 +1,74 @@
++# rules removed from the domain attribute
++
++# Read access to properties mapping.
++allow domain_deprecated kernel:fd use;
++allow domain_deprecated tmpfs:file { read getattr };
++allow domain_deprecated tmpfs:lnk_file { read getattr };
++
++# Search /storage/emulated tmpfs mount.
++allow domain_deprecated tmpfs:dir r_dir_perms;
++
++# Inherit or receive open files from others.
++allow domain_deprecated system_server:fd use;
++
++# Connect to adbd and use a socket transferred from it.
++# This is used for e.g. adb backup/restore.
++allow domain_deprecated adbd:unix_stream_socket connectto;
++allow domain_deprecated adbd:fd use;
++allow domain_deprecated adbd:unix_stream_socket { getattr getopt ioctl read write shutdown };
++
++# Root fs.
++allow domain_deprecated rootfs:dir r_dir_perms;
++allow domain_deprecated rootfs:file r_file_perms;
++allow domain_deprecated rootfs:lnk_file r_file_perms;
++
++# Device accesses.
++allow domain_deprecated device:file read;
++
++# System file accesses.
++allow domain_deprecated system_file:dir r_dir_perms;
++allow domain_deprecated system_file:file r_file_perms;
++allow domain_deprecated system_file:lnk_file r_file_perms;
++
++# Read files already opened under /data.
++allow domain_deprecated system_data_file:dir { search getattr };
++allow domain_deprecated system_data_file:file { getattr read };
++allow domain_deprecated system_data_file:lnk_file r_file_perms;
++
++# Read apk files under /data/app.
++allow domain_deprecated apk_data_file:dir { getattr search };
++allow domain_deprecated apk_data_file:file r_file_perms;
++allow domain_deprecated apk_data_file:lnk_file r_file_perms;
++
++# Read /data/dalvik-cache.
++allow domain_deprecated dalvikcache_data_file:dir { search getattr };
++allow domain_deprecated dalvikcache_data_file:file r_file_perms;
++
++# Read already opened /cache files.
++allow domain_deprecated cache_file:dir r_dir_perms;
++allow domain_deprecated cache_file:file { getattr read };
++allow domain_deprecated cache_file:lnk_file r_file_perms;
++
++#Allow access to ion memory allocation device
++allow domain_deprecated ion_device:chr_file rw_file_perms;
++
++# Read access to pseudo filesystems.
++r_dir_file(domain_deprecated, proc)
++r_dir_file({ domain_deprecated -isolated_app }, sysfs)
++r_dir_file(domain_deprecated, inotify)
++r_dir_file(domain_deprecated, cgroup)
++allow domain_deprecated proc_meminfo:file r_file_perms;
++r_dir_file(domain_deprecated, proc_net)
++
++# Get SELinux enforcing status.
++allow domain_deprecated selinuxfs:dir r_dir_perms;
++allow domain_deprecated selinuxfs:file r_file_perms;
++
++# /data/security files
++allow domain_deprecated security_file:dir { search getattr };
++allow domain_deprecated security_file:file getattr;
++allow domain_deprecated security_file:lnk_file r_file_perms;
++
++# World readable asec image contents
++allow domain_deprecated asec_public_file:file r_file_perms;
++allow domain_deprecated { asec_public_file asec_apk_file }:dir r_dir_perms;
+diff --git a/file.te b/file.te
+index 779517c..72ee8af 100644
+--- a/file.te
++++ b/file.te
+@@ -214,3 +214,5 @@ allow dev_type tmpfs:filesystem associate;
+ # Should be:
+ #   type apk_data_file, file_type, data_file_type;
+ neverallow fs_type file_type:filesystem associate;
++
++type proc_meminfo, fs_type;
+diff --git a/genfs_contexts b/genfs_contexts
+index 3aac306..a6fdd41 100644
+--- a/genfs_contexts
++++ b/genfs_contexts
+@@ -4,6 +4,7 @@ genfscon rootfs / u:object_r:rootfs:s0
+ genfscon proc / u:object_r:proc:s0
+ genfscon proc /net u:object_r:proc_net:s0
+ genfscon proc /net/xt_qtaguid/ctrl u:object_r:qtaguid_proc:s0
++genfscon proc /meminfo u:object_r:proc_meminfo:s0
+ genfscon proc /cpuinfo u:object_r:proc_cpuinfo:s0
+ genfscon proc /sysrq-trigger u:object_r:proc_sysrq:s0
+ genfscon proc /sys/fs/protected_hardlinks u:object_r:proc_security:s0
+-- 
+2.13.0
+

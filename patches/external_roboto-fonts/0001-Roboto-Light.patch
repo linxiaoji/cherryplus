@@ -1,9 +1,10 @@
-From b3cfe5f34b0ba033fb505ba9a2c5a2a8cbb2e61e Mon Sep 17 00:00:00 2001
+From cc1baecd673b542c5680348daddfa6ce6343eba5 Mon Sep 17 00:00:00 2001
 From: ksrt12 <kazakov12stepan2012@live.ru>
-Date: Wed, 31 May 2017 00:01:19 +0300
+Date: Tue, 27 Jun 2017 20:29:43 +0300
 Subject: [PATCH] Roboto-Light
 
-Change-Id: Ib428e248ce2ee1b8d8b3ed5f6f8e1dc28502e746
+Change-Id: I3d355ca703792f2efb6d33d88e7b7cdb44aa80c6
+Signed-off-by: ksrt12 <kazakov12stepan2012@live.ru>
 ---
  Roboto-Regular.ttf | Bin 299060 -> 298568 bytes
  1 file changed, 0 insertions(+), 0 deletions(-)

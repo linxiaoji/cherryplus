@@ -14,20 +14,19 @@ ro.hwcamera.use.videosize.1080p=true
 ro.hwcamera.previeweffects=true
 persist.camera.cpp.duplication=false
 
-# Performance
-ro.am.reschedule_service=true
-#
-# Graphics
-#
-ro.bq.gpu_to_cpu_unsupported=1
-#
 # Media
-#
-#persist.k3_video_encoder=false
-persist.google_h264_encoder=true
-persist.sr_GoogleH264Encoder=1
+media.stagefright.use-awesome=false
+media.stagefright.enable-player=true
+media.stagefright.enable-http=true
+media.stagefright.enable-aac=true
+media.stagefright.enable-qcp=true
+media.stagefright.enable-fma2dp=true
+media.stagefright.enable-scan=true
 media.stagefright.legacyencoder=true
 media.stagefright.less-secure=true
+
+# Performance
+ro.am.reschedule_service=true
 
 ro.hwui.texture_cache_size=72
 ro.hwui.texture_cache_flushrate=0.4
@@ -47,6 +46,7 @@ debug.hwui.render_dirty_regions=false
 persist.dsds.enabled=true
 persist.radio.multisim.config=dsds
 persist.sys.dualcards=true
+
 ril.hw_modem0.rssi=-1
 ril.hw_modem1.rssi=-1
 rild.libargs=-m modem0
@@ -54,7 +54,10 @@ rild.libargs1=-m modem1
 rild.libpath=/system/lib64/libbalong-ril.so
 rild.libpath1=/system/lib64/libbalong-ril-1.so
 ro.telephony.sim.count=2
-ro.telephony.ril_class=HuaweiRIL
+
+persist.radio.lte_enabled=true
+ro.telephony.ril.config=simactivation
+
 audioril.lib=libhuawei-audio-ril.so
 persist.radio.apm_sim_not_pwdn=1
 rild.rild1_ready_to_start=true
@@ -67,8 +70,9 @@ ro.telephony.ril.config=simactivation
 telephony.lteOnCdmaDevice=0
 telephony.lteOnGsmDevice=1
 
-ro.config.helix_enable=true
+#ro.config.helix_enable=true
 ro.config.hw_useCtrlSocket=true
 ro.config.colorTemperature_K3=true
 
 persist.sys.isUsbOtgEnabled=true
+ro.config.hw_otgFeature=true
