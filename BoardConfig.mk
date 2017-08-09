@@ -72,6 +72,7 @@ BOARD_RECOVERY_NEEDS_FBIOPAN_DISPLAY := true
 BACKLIGHT_PATH := "/sys/class/leds/lcd_backlight0/brightness"
 
 # CMHW
+# DOUBLE_TAP_TO_WAKE := "/sys/touchscreen/easy_wakeup_gesture"
 BOARD_HARDWARE_CLASS := \
     $(LOCAL_PATH)/cmhw \
     hardware/cyanogen/cmhw
@@ -113,6 +114,7 @@ TARGET_PROVIDES_LIBLIGHT := true
 
 # Partitions
 TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_F2FS := true
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_BOOTIMAGE_PARTITION_SIZE := 25165824

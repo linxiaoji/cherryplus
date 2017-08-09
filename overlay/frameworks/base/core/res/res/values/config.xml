@@ -213,6 +213,9 @@
          config to 7. -->
     <integer name="config_deviceHardwareWakeKeys">1</integer>
 
+    <!-- Whether device supports double tap to wake -->
+    <bool name="config_supportDoubleTapWake">true</bool>
+
     <!-- Indicate whether the SD card is accessible without removing the battery. -->
     <bool name="config_batterySdCardAccessibility">true</bool>
 
@@ -223,7 +226,7 @@
     <!-- The RadioAccessFamilies supported by the device. + Empty is
          viewed as "all".  Only used on devices which + don't support
          RIL_REQUEST_GET_RADIO_CAPABILITY + format is UMTS|LTE|... -->
-    <!--string translatable="false" name="config_radio_access_family">GPRS|EDGE|UMTS|HSDPA|HSUPA|HSPA|LTE|HSPAP|GSM|TD_SCDMA|WCDMA</string-->
+    <!-- TD_SCDMA -->
     <string translatable="false" name="config_radio_access_family">GSM|GPRS|EDGE|WCDMA|UMTS|HSDPA|HSUPA|HSPA|HSPAP|LTE</string>
 
     <!-- Base "touch slop" value used by ViewConfiguration as a
